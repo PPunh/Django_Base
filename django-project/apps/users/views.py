@@ -2,16 +2,14 @@ from django.http import HttpResponse
 from django.views.generic.edit import FormView, CreateView, UpdateView
 from django.views.generic import ListView, TemplateView
 import logging
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView, PasswordChangeView
+from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import AuthenticationForm
 from django.db.models import Q
 from django.db import transaction
 from django.contrib import messages
-from django.shortcuts import redirect
 from django.urls import reverse_lazy
-from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.utils.decorators import method_decorator
 from django.views.decorators.http import require_http_methods
 from django.views.decorators.cache import never_cache

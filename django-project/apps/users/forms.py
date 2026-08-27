@@ -1,15 +1,13 @@
 from django import forms
-from django.forms import ModelForm, inlineformset_factory
+from django.forms import ModelForm
 from django.conf import settings
-from django.contrib.auth.forms import AuthenticationForm, UserCreationForm, UserChangeForm, PasswordChangeForm, AdminPasswordChangeForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.password_validation import validate_password
 from django.core.exceptions import ValidationError
 from .backends import MultiAuthBackend
-
 from django.utils import timezone
 from . import models
 from .models import User
-# from apps.app_employee.models import EmployeesModel
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
