@@ -1,0 +1,15 @@
+/* Minimal non-navigation styling.
+   Prefer W3.CSS classes; keep this file tiny. */
+
+body {
+  background-color: #f8fafc;
+  color: #1e293b;
+  font-family: "Inter", "Noto Sans Lao", system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+.lao-noto {
+  font-family: "Noto Sans Lao", "Inter", system-ui, -apple-system, sans-serif;
+}
+

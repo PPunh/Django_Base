@@ -1,0 +1,23 @@
+{% load humanize %}
+<div id="invoiceOutModal" class="w3-modal">
+    <div class="w3-modal-content w3-card-4 w3-animate-zoom" style="width: 90%;">
+        <header class="w3-container w3-card w3-round-xlarge">
+            <h5 class="w3-text-grey w3-center">
+                <i class="fa fa-file-text"></i>
+                Upload INVOICE OUT (To Customer): {{ quotation.code }}
+            </h5>
+        </header>
+        <form method="post" enctype="multipart/form-data" class="w3-container w3-margin-top w3-light-grey w3-padding-16 w3-round" action="">
+                {% csrf_token %}
+                <input type="hidden" name="form_type" value="invoice">
+                <input type="hidden" name="quotation_ref" id="id_quotation_ref">
+                
+                {{form.as_p}}
+                
+                <div class="w3-padding-16 w3-center">
+                    <button type="button" class="w3-button w3-red w3-round-large w3-hover-shadow" onclick="closeModal('invoiceOutModal')">Cancel</button>
+                    <button type="submit" class="w3-button w3-green w3-round-large w3-margin-left">Save</button>
+                </div>
+            </form>
+    </div>
+</div>

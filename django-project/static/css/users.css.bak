@@ -1,0 +1,50 @@
+    display: none;
+    position: absolute;
+    min-width: 280px !important;
+    background-color: rgba(255, 255, 255, 0.98);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0,0,0,0.05);
+    margin-top: auto;
+    padding: 8px 0;
+    z-index: 10000 !important;
+}
+
+@keyframes fadeInSlide {
+    from {
+        opacity: 0;
+        transform: translateY(15px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* ============================================
+   CLICK-BASED DROPDOWN - Final Version
+   ============================================ */
+
+/* IMPORTANT: Hide dropdowns by default */
+.w3-dropdown-content {
+    display: none !important;
+}
+
+/* Hide on hover - force click only */
+.w3-dropdown-hover:hover .w3-dropdown-content {
+    display: none !important;
+}
+
+/* Show ONLY when dropdown has dropdown-active class (clicked) */
+.w3-dropdown-hover.dropdown-active .w3-dropdown-content {
+    display: block !important;
+    animation: fadeInSlide 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Style active dropdown button */
+.w3-dropdown-hover.dropdown-active > .w3-button {
+    color: #ff5722 !important;
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-radius: 10px !important;
+}

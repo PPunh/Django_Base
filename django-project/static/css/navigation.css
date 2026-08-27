@@ -1,0 +1,86 @@
+/* Navigation-only styles.
+   Keep this file focused on `templates/navigation_top.html`. */
+
+.w3-top {
+  z-index: 9999 !important;
+}
+
+/* Glass helper used by navbar container */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+#myNavbar {
+  background: linear-gradient(135deg, #001f3f 0%, #000428 100%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: white;
+  padding: 8px 32px;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  overflow: visible !important;
+}
+
+.w3-dropdown-content {
+  display: none !important;
+  position: absolute;
+  min-width: 280px !important;
+  background-color: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: auto;
+  padding: 8px 0;
+  z-index: 10000 !important;
+}
+
+@keyframes fadeInSlide {
+  from {
+    opacity: 0;
+    transform: translateY(15px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Click-based dropdowns (see `static/js/navigation_top.js`) */
+.w3-dropdown-hover:hover .w3-dropdown-content {
+  display: none !important;
+}
+
+.w3-dropdown-hover.dropdown-active .w3-dropdown-content {
+  display: block !important;
+  animation: fadeInSlide 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.w3-dropdown-hover.dropdown-active > .w3-button {
+  color: #ff5722 !important;
+  background: rgba(255, 255, 255, 0.1) !important;
+  border-radius: 10px !important;
+}
+
+/* Nav button hover rounding */
+#myNavbar .w3-button-outline:hover,
+#myNavbar .w3-dropdown-hover:hover > .w3-button {
+  border-radius: 10px !important;
+}
+
+#myNavbar .w3-button-outline,
+#myNavbar .w3-dropdown-hover > .w3-button {
+  transition: all 0.2s ease;
+}
+
+@media screen and (max-width: 950px) {
+  #myNavbar {
+    padding: 8px 15px;
+  }
+}
+

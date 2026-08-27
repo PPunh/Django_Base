@@ -1,0 +1,65 @@
+{% load static 
+<div class="w3-center w3-padding-32">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; min-height: 100px;">
+        <div style="display: flex; gap: 12px; align-items: center; justify-content: center;">
+
+            {# Previous Button #}
+            {% if page_obj.has_previous 
+                <a href="?page={{ page_obj.previous_page_number }}"
+                   class="w3-button w3-circle w3-hover-blue"
+                   style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); flex-shrink: 0;"
+                   onmouseover="this.style.transform='translateX(-3px) scale(1.1)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.4)'"
+                   onmouseout="this.style.transform='translateX(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(37, 99, 235, 0.3)'">
+                    <i class="fa fa-chevron-left" style="font-weight: bold; font-size: 16px;"></i>
+                </a>
+            {% else 
+                <button class="w3-button w3-circle w3-disabled"
+                        style="background: linear-gradient(to bottom, #f1f5f9, #e2e8f0); color: #94a3b8; border: none; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: not-allowed; flex-shrink: 0;">
+                    <i class="fa fa-chevron-left" style="font-size: 16px;"></i>
+                </button>
+            {% endif 
+
+            {# Page Numbers #}
+            {% for page_num in page_obj.paginator.page_range 
+                {% if page_num == page_obj.number 
+                    <span class="w3-button w3-circle"
+                          style="background: linear-gradient(135deg, #2563eb, #1e40af); color: white; border: 2px solid #2563eb; font-weight: 800; width: 30px; height: 30px; padding: 0; display: flex; align-items: center; justify-content: center; box-shadow: 0 6px 20px rgba(37, 99, 235, 0.4); transform: scale(1.1); flex-shrink: 0;">
+                        {{ page_num }}
+                    </span>
+                {% else 
+                    <a href="?page={{ page_num }}"
+                       class="w3-button w3-circle w3-hover-blue"
+                       style="background: linear-gradient(to bottom, #ffffff, #f8fafc); color: #2563eb; border: 2px solid #e2e8f0; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; font-weight: 600; transition: all 0.2s ease; box-shadow: 0 2px 8px rgba(0,0,0,0.08); flex-shrink: 0;"
+                       onmouseover="this.style.background='linear-gradient(135deg, #dbeafe, #bfdbfe)'; this.style.borderColor='#2563eb'; this.style.transform='scale(1.15)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.3)'"
+                       onmouseout="this.style.background='linear-gradient(to bottom, #ffffff, #f8fafc)'; this.style.borderColor='#e2e8f0'; this.style.transform='scale(1)'; this.style.boxShadow='0 2px 8px rgba(0,0,0,0.08)'">
+                        {{ page_num }}
+                    </a>
+                {% endif 
+            {% endfor 
+
+            {# Next Button #}
+            {% if page_obj.has_next 
+                <a href="?page={{ page_obj.next_page_number }}"
+                   class="w3-button w3-circle w3-hover-blue"
+                   style="background: linear-gradient(135deg, #3b82f6, #2563eb); color: white; border: none; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3); flex-shrink: 0;"
+                   onmouseover="this.style.transform='translateX(3px) scale(1.1)'; this.style.boxShadow='0 6px 20px rgba(37, 99, 235, 0.4)'"
+                   onmouseout="this.style.transform='translateX(0) scale(1)'; this.style.boxShadow='0 4px 15px rgba(37, 99, 235, 0.3)'">
+                    <i class="fa fa-chevron-right" style="font-weight: bold; font-size: 16px;"></i>
+                </a>
+            {% else 
+                <button class="w3-button w3-circle w3-disabled"
+                        style="background: linear-gradient(to bottom, #f1f5f9, #e2e8f0); color: #94a3b8; border: none; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; cursor: not-allowed; flex-shrink: 0;">
+                    <i class="fa fa-chevron-right" style="font-size: 16px;"></i>
+                </button>
+            {% endif 
+
+        </div>
+
+        {# Page Info #}
+        {% if page_obj 
+        <div class="w3-small w3-text-grey" style="color: #64748b; font-weight: 500; letter-spacing: 0.5px; text-align: center;">
+            Page"  <b style="color: #2563eb;">{{ page_obj.number }}</b> of"  <b>{{ page_obj.paginator.num_pages }}</b>
+        </div>
+        {% endif 
+    </div>
+</div>

@@ -1,0 +1,23 @@
+{% load humanize %}
+<div id="invoiceModal" class="w3-modal w3-round-xlarge w3-animate-zoom">
+    <div class="w3-container w3-padding-24 w3-round-xlarge">
+        <div class="w3-card-4 w3-white" style="width: 90%; margin: auto;">
+            <header class="w3-container w3-card w3-round-xlarge">
+                <h5 class="w3-text-grey w3-center">
+                    <i class="fa fa-file-text"></i>
+                    Upload INVOICE IN (From Supplier): {{ quotation.code }}
+                </h5>
+            </header>
+
+            <div class="w3-container w3-blue">
+                <h3>Create Invoice Out</h3>
+                <span onclick="closeModal('invoiceModal')" class="w3-button w3-display-topright">&times;</span>
+            </div>
+            <div class="w3-padding">
+                <p>Invoice Out functionality coming soon...</p>
+                <button type="button" onclick="closeModal('invoiceModal')" class="w3-button w3-red w3-round">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>

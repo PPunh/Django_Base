@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  django-app:
+    build:
+      context: .
+      args:
+        - DEV=false
+    container_name: django-app
+    init: true
+    ports:
+      - "8000:8000"
+      - "8001:8001"
+    environment:
+      - POSTGRES_HOST=postgres
+      - POSTGRES_USER=db_user_100
+      - POSTGRES_PASSWORD=db_password_100_example!!!
+      - POSTGRES_DB=db_name_100
+    volumes:
+      - ./django-project:/django-project
+    networks:
+      - internal-network
+    command: |
+      sh -c "
+      mkdir -p /django-project/certs && \
+      if [ ! -f /django-project/certs/cpserver_ssl.cert ] || [ ! -f /django-project/certs/cpserver_ssl.key ]; then
+          openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /django-project/certs/cpserver_ssl.key -out /django-project/certs/cpserver_ssl.cert -subj '/CN=localhost' && \
+          echo 'Generated self-signed SSL certificates for CP Server'
+      else
+          echo 'SSL certificates already exist'
+      fi && \
+      if [ ! -f /django-project/certs/server.cert ] || [ ! -f /django-project/certs/server.key ]; then
+          openssl req -x509 -nodes -days 3650 -newkey rsa:2048 -keyout /django-project/certs/server.key -out /django-project/certs/server.cert -subj '/CN=pgadmin' && \
+          echo 'Generated self-signed SSL certificates for pgAdmin'
+      else
+          echo 'SSL certificates for pgAdmin already exist'
+      fi && \
+      chmod -R 777 /django-project/certs && \
+      python3 manage.py wait_for_db && \
+      python3 manage.py migrate --noinput && \
+      python3 manage.py collectstatic --noinput
+      /venv/bin/python3 manage.py runserver 0.0.0.0:8001 &
+      exec /venv/bin/gunicorn wsgi:application --bind 0.0.0.0:8000 --workers 2 --timeout 120 --keyfile=/django-project/certs/cpserver_ssl.key --certfile=/django-project/certs/cpserver_ssl.cert
+      "

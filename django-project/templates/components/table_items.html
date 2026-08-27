@@ -1,0 +1,139 @@
+{% load common_tags 
+<div class="w3-card-4 w3-round-xlarge w3-white">
+    <div class="w3-responsive">
+        <table class="w3-table w3-hoverable w3-striped">
+            <thead class="w3-blue">
+                <tr style="border-bottom: 2px solid #f1f1f1; font-size: 0.85em;">
+                    <th class="w3-padding-16" width="60px">#</th>
+                    {% for header in headers 
+                        <th class="w3-padding-16">
+                            {{ header.label |upper }}
+                        </th>
+                    {% endfor 
+                    <th>  </th>
+                </tr>
+            </thead>
+            <tbody class="lao-noto w3-text-grey">
+                {% for item in table_items 
+                    <tr style="border-bottom: 1px solid #f9f9f9; cursor: pointer;"
+                        class="row-link"
+                        data-url="#">
+                        <td class="w3-text-grey">{{ forloop.counter }}</td>
+
+                        {% for header in headers 
+                            <td>
+                                {% with value=item|get_obj_attr:header.field 
+
+                                    {% if header.field == 'customer_info' 
+                                        <div class="w3-cel-padding">
+                                            {{ value.name }} <br>
+                                            <span class="w3-small"> - {{ value.contact_person }} </span>
+                                        </div>
+
+                                    {% elif 'status' in header.field 
+                                        {% if value == "COMPLETED" or value == "ACTIVE" or value == "PAID" or value == "LOADED" 
+                                            <span class="w3-text-green"><strong>{{ item.get_status_display }}</strong></span>
+                                        {% elif value == "PENDING" or value == "UNPAID" or value == "UNLOAD" or value == "IN PROGRESS" 
+                                             <span class="w3-text-blue"><strong>{{ item.get_status_display }}</strong></span>
+                                        {% elif value == "EXPIRED_SOON" or value == "EXPIRED" or value == "CANCELLED" or value == "REFOUNDED" or value == "SUSPENDED" 
+                                             <span class="w3-text-deep-orange"><strong>{{ item.get_status_display }}</strong></span>
+                                        {% else 
+                                            <span class="w3-text-red"><strong>{{ item.get_status_display }}</strong></span>
+                                        {% endif 
+                                        
+                                    {% elif 'items__name' in header.field 
+                                        {% for i in item.items.all 
+                                            {{i.name}} <br>
+                                        {% empty 
+                                                -
+                                        {% endfor 
+
+                                        {% elif 'items__period' in header.field 
+                                            {% for p in item.items.all 
+                                                {{p.period}} <br>
+                                            {% empty 
+                                                -
+                                            {% endfor 
+
+                                        {% elif 'items__quantity' in header.field 
+                                            {% for q in item.items.all 
+                                                {{q.quantity}} <br>
+                                            {% empty 
+                                                -
+                                            {% endfor 
+
+                                    {% elif header.field == 'user__is_active' 
+                                        {% if value == True 
+                                            <span class="w3-text-green"><strong>Active</strong></span>
+                                        {% else 
+                                            <span class="w3-text-red"><strong>Inactive</strong></span>
+                                        {% endif 
+
+                                    {% elif header.field == 'addi_price__grand_total' 
+                                        <strong class="w3-text-blue">$ {{ value }}</strong>
+
+                                    {% elif header.field == 'position' 
+                                        <strong class="w3-text-green">{{ value|upper }}</strong>
+
+                                    {% elif header.field == 'user__username' 
+                                        <strong class="w3-text-blue w3-border w3-border-blue w3-margin w3-padding-small w3-tiny w3-round-xxlarge">{{value|slice:":1"|upper}}</strong>
+                                        <span>{{value}}</span>
+
+                                    {% elif header.field == 'start_date' 
+                                        <span class="w3-text-green"> {{ value | date:"d/m/Y" }} </span>
+
+                                    {% elif header.field == 'end_date' 
+                                        <span class="w3-text-red">{{ value | date:"d/m/Y" }}</span>
+
+                                    {% elif header.field == 'addi_price__grand_total' 
+                                        <strong class="w3-text-blue">{{ value }} UDS</strong>
+
+                                    {% elif header.field == "remaining_days" 
+                                        {{ value }} Days" 
+                                    {% else 
+                                        {{ value|default:"-"}}
+                                    {% endif 
+                                {% endwith 
+                            </td>
+                        {% endfor 
+                        <td class="w3-center">
+                            <div class="w3-bar w3-center" style="white-space: nowrap;">
+                                <!-- Detail Button -->
+                                <a href="{% url details_url_name pk=item.pk " 
+                                   class="w3-button w3-white w3-border w3-border-blue-gray w3-text-blue-gray w3-hover-blue-gray w3-hover-text-white w3-round-medium w3-tiny w3-padding-small w3-margin-right"
+                                   title="View Details">
+                                    <i class="fa-solid fa-circle-info w3-margin-right"></i>Detail" 
+                                </a>
+
+                                <!-- Task Button -->
+                                {% if item|get_obj_attr:quotation_code_attr 
+                                <a href="{% url 'users:short_task' ?search={{ item|get_obj_attr:quotation_code_attr }}"
+                                   class="w3-button w3-theme w3-hover-teal w3-text-white w3-round-medium w3-tiny w3-padding-small w3-card-1"
+                                   title="View Task">
+                                    <i class="fa-solid fa-list-check w3-margin-right"></i>Task" 
+                                </a>
+                                {% endif 
+                            </div>
+                        </td>
+                    </tr>
+                {% empty 
+                    <tr>
+                        <td colspan="{{ headers|length|add:2 }}" class="w3-center w3-padding-64">
+                            <i class="fa fa-folder-open-o w3-text-light-grey" style="font-size: 48px;"></i>
+                            <p class="w3-text-grey w3-margin-top">No data found." </p>
+                        </td>
+                    </tr>
+                {% endfor 
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Table Footer -->
+    <div class="w3-padding">
+        <div style="font-size: 0.85rem;" class="w3-text-grey">
+            <i class="fa-solid fa-list-ol w3-margin-right"></i>
+            Showing"  <strong>{% if paginator {{ paginator.count }}{% else {{ table_items.count }}{% endif </strong> records" 
+        </div>
+
+    </div>
+</div>

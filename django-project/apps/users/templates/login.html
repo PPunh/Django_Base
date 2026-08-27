@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% load widget_tweaks %}
+
+{% block navigation_top %}
+{% endblock %}
+
+{% block main-content %}
+<div class="w3-container w3-row" style="height: 80vh;">
+    <div class="w3-col l4 m6 s12 w3-display-center w3-margin-top" style="position: relative; float: none; margin: 0 auto;">
+
+        <div class="w3-padding-32 w3-white">
+
+            <form method="post" class="w3-container w3-center">
+                {% csrf_token %}
+
+                <div class="w3-center w3-margin-bottom">
+                    <div>
+                        <img src="{% static 'images/Logo-placeholder-400x400.png' %}" alt="logo" style="width: 120px;">
+                    </div>
+                    <h2 class="w3-text-grey lao-noto" style="font-weight: 900; margin-top: 10px;">TOP VALUE SERVICE</h2>
+                    <p class="w3-text-gray">
+                        <i>Please login to your account</i>
+                    </p>
+                </div>
+
+                <div class="w3-section">
+                    <label class="w3-small w3-text-grey"><b>Username</b></label>
+                    <input type="text" name="username" autofocus autocomplete="off"
+                        class="w3-input w3-border-0 w3-light-grey w3-round w3-center"
+                        placeholder="Username / Email / Phone" required id="id_username">
+                </div>
+
+                <div class="w3-section">
+                    <label class="w3-small w3-text-grey"><b>Password</b></label>
+                    <input type="password" name="password" autocomplete="off"
+                        class="w3-input w3-border-0 w3-light-grey w3-round w3-center"
+                        placeholder="**********" required id="id_password">
+                </div>
+
+                <div class="w3-section">
+                    <button type="submit"
+                    class="w3-button w3-block w3-blue w3-round w3-padding-large w3-hover-black w3-hover-text-white w3-hover-shadow" style="font-weight: bold;">
+                        <span>Sign In</span> &nbsp;
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </form>
+
+            <hr class="w3-border-grey" style="opacity: 0.2; margin: 20px 16px;">
+
+            <div class="w3-container w3-center">
+                <p class="w3-text-grey w3-small">© {% now "Y" %} TOP VALUE SERVICE</p>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+{% endblock %}

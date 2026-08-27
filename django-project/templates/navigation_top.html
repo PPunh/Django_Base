@@ -1,0 +1,88 @@
+{% load static %}
+<div class="w3-top w3-center" style="z-index:99999 !important;">
+  <div class="w3-bar glass" id="myNavbar">
+    <a href="{% url 'users:home' %}"
+      class="w3-bar-item w3-button w3-hover-none w3-hover-text-primary w3-padding-small"
+      style="display: flex; align-items: center; height: 50px;">
+      <img src="{% static 'images/Logo-placeholder-400x400.png' %}" alt="Logo" style="height:45px; border-radius: 8px;" class="w3-white">
+      <span class="lao-noto w3-margin-left w3-hide-small"
+        style="font-size: 1.25rem; font-weight: 800; letter-spacing: -0.01em;">
+        TOP VALUE SERVICE
+      </span>
+    </a>
+
+    <button class="w3-bar-item w3-button w3-right w3-hide-medium w3-hide-large nav-hamburger w3-button-outline w3-round-large"
+      onclick="w3_open()" style="height: 44px; margin-left: auto; border-radius: 10px;">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <div class="w3-right w3-hide-small"
+      style="display: flex; align-items: center; height: 50px; gap: 4px; margin-left: auto;">
+
+      <a href="{% url 'users:home' %}" class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+        <i class="fa-solid fa-list-check w3-margin-right"></i>
+        <span>Home</span>
+      </a>
+
+      <div class="w3-dropdown-hover" style="background: none;" onclick="toggleNavDropdown(event, this)">
+        <button class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+          <i class="fa-solid fa-layer-group w3-margin-right"></i>
+          <span>Services</span>
+          <i class="fa fa-chevron-down dropdown-arrow" style="font-size: 10px; margin-left: 6px;"></i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"
+          style="min-width: 220px; border: 1px solid #e2e8f0;">
+          <a href="#" class="w3-bar-item w3-button"
+            style="padding: 12px 20px;">
+            <i class="fa fa-file-text w3-text-green w3-margin-right"></i> Dropdown 1
+          </a>
+        </div>
+      </div>
+
+      <div class="w3-dropdown-hover" style="background: none;" onclick="toggleNavDropdown(event, this)">
+        <button class="w3-button w3-button-outline w3-round-large" style="font-size: 0.9rem;">
+          <i class="fa-solid fa-briefcase w3-margin-right"></i>
+          <span>Managements</span>
+          <i class="fa fa-chevron-down dropdown-arrow" style="font-size: 10px; margin-left: 6px;"></i>
+        </button>
+        <div class="w3-dropdown-content w3-bar-block w3-card-4"
+          style="min-width: 260px; border: 1px solid #e2e8f0;">
+          <a href="#" class="w3-bar-item w3-button"
+            style="padding: 12px 20px;">
+            <i class="fa fa-users w3-text-blue w3-margin-right"></i> Customer Management
+          </a>
+          <a href="#" class="w3-bar-item w3-button"
+            style="padding: 12px 20px;">
+            <i class="fa fa-truck w3-text-orange w3-margin-right"></i> Supplier Management
+          </a>
+          <a href="#" class="w3-bar-item w3-button"
+            style="padding: 12px 20px;">
+            <i class="fa-solid fa-id-card w3-text-teal w3-margin-right"></i> My Profile
+
+          {% if user.is_authenticated and user.is_superuser %}
+          <div style="background-color: #eff6ff; margin: 8px; padding: 12px; border-radius: 12px;">
+            <p
+              style="font-size: 0.7rem; color: #2563eb; margin: 0 0 8px 0; font-weight: 800; text-transform: uppercase; letter-spacing: 0.05em;">
+              Admin Control</p>
+            <a href="#"
+              class="w3-bar-item w3-button w3-white w3-round-large w3-margin-bottom-small"
+              style="font-size: 0.9rem; padding: 10px;">
+              <i class="fa fa-user-shield w3-text-red w3-margin-right"></i> Staff Management
+            </a>
+            <a href="{% url 'admin:index' %}" class="w3-bar-item w3-button w3-white w3-round-large"
+              style="font-size: 0.9rem; padding: 10px;">
+              <i class="fa fa-gears w3-text-indigo w3-margin-right"></i> Django Admin
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+
+      <a href="{% url 'users:logout' %}" class="w3-button w3-text-red w3-hover-red w3-hover-text-white"
+        style="padding: 8px 16px !important; margin-left: 8px; border-radius: 8px;">
+        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+      </a>
+
+    </div>
+  </div>
+</div>

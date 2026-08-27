@@ -1,0 +1,42 @@
+# version: "3.9"
+
+volumes:
+  pgadmin_data:
+
+networks:
+  internal-network:
+    driver: bridge
+
+services:
+  postgres:
+    extends:
+      file: docker-compose.db.yml
+      service: postgres
+    networks:
+      - internal-network
+
+  memcached:
+    extends:
+      file: docker-compose.memcached.yml
+      service: memcached
+    networks:
+      - internal-network
+
+  django-app:
+    extends:
+      file: docker-compose.django.yml
+      service: django-app
+    depends_on:
+      - postgres
+      - memcached
+    networks:
+      - internal-network
+
+  pgadmin:
+    extends:
+      file: docker-compose.pgadmin.yml
+      service: pgadmin
+    depends_on:
+      - postgres
+    networks:
+      - internal-network

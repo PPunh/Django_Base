@@ -1,0 +1,79 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %} {{ title }} {% endblock %}</title>
+
+        <link rel="icon" href="{% static 'images/favicon.png' %}" type="image/png">
+
+        {% comment %} Preconnect need write in the head (can't move to CSS base_vendor.css) {% endcomment %}
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+        {% comment %} Vendor CSS: fonts + icons {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/base_vendor.css' %}">
+
+        {% comment %} a lightweight Google Material Design CSS libs {% endcomment %}
+        <link href="{% static 'css/w3/w3.css' %}" rel="stylesheet">
+        {% if theme_color %}
+            <link href="{% static 'css/w3/'|add:theme_color %}" rel="stylesheet">
+        {% else %}
+            <link href="{% static 'css/w3/w3-theme-blue.css' %}" rel="stylesheet">
+        {% endif %}
+
+        {% comment %} your own Custom CSS {% endcomment %}
+        <link rel="stylesheet" href="{% static 'css/users.css' %}">
+        <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+
+        {% block css %}{% endblock %}
+
+        {% comment %} Lao Font libs {% endcomment %}
+        <link href="{% static 'fonts/lao/lao-font.css' %}" rel="stylesheet">
+
+        {% comment %} Django Select2 {% endcomment %}
+        <link href="{% static 'django_select2/django_select2.css' %}" rel="stylesheet">
+
+        {% block extra_css %}{% endblock %}
+    </head>
+    <body class="lao-noto" style="margin-top: 100px; height: 100vh;">
+        {% comment %} Top Navigation {% endcomment %}
+        {% block navigation_top %}
+            {% if user.is_authenticated %}
+                {% include 'navigation_top.html' %}
+            {% endif %}
+        {% endblock %}
+
+        {% comment %} Hero {% endcomment %}
+        {% block hero %}
+        {% endblock %}
+
+        {% comment %} left Navigation {% endcomment %}
+        {% block navigation_left %}
+        {% endblock %}
+
+        {% comment %} Main content of the page {% endcomment %}
+        {% block main-content %}
+        {% endblock %}
+
+        {% comment %} page footer {% endcomment %}
+        {% block footer %}
+        {% endblock %}
+
+        {% comment %} Main JS libs {% endcomment %}
+        <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+        <script src="{% static 'js/navigation_top.js' %}"></script>
+        <script src="{% static 'js/root_js.js' %}"></script>
+        
+        {% comment %} additional JS libs {% endcomment %}
+        {% block js %}
+        {% endblock %}
+        {% comment %} Toast Message Here {% endcomment %}
+        {% include 'partial/toast_messages.html' %}
+
+        {% comment %} Django Select2 {% endcomment %}
+        <script src="{% static 'django_select2/django_select2.js' %}"></script>
+    </body>
+</html>

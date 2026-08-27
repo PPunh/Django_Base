@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load static %}
+{% load humanize %}
+{% load widget_tweaks %}
+
+{% block navigation_top %} {% endblock %}
+
+{% block main-content %}
+<style>
+    .bounce-animation {
+        animation: bounce 2s infinite;
+        display: inline-block;
+    }
+
+    @keyframes bounce {
+
+        0%,
+        20%,
+        50%,
+        80%,
+        100% {
+            transform: translateY(0);
+        }
+
+        40% {
+            transform: translateY(-20px);
+        }
+
+        60% {
+            transform: translateY(-10px);
+        }
+    }
+
+    .cute-container {
+        background: linear-gradient(135deg, #fdfbfb 0%, #ebedee 100%);
+        min-height: 90vh;
+        display: flex;
+        align-items: center;
+    }
+
+    .sassy-text {
+        font-family: 'Comic Sans MS', 'cursive', sans-serif;
+        color: #ff5722;
+    }
+</style>
+
+<div class="cute-container">
+    <div class="w3-container w3-center w3-animate-zoom" style="max-width:600px; margin:auto;">
+        <div class="w3-card-4 w3-white w3-round-xlarge w3-padding-64"
+            style="border-top: 8px solid #ff5722; position: relative;">
+
+            <span class="w3-tag w3-red w3-round w3-display-topright w3-margin" style="transform: rotate(15deg);">
+            Private Party!</span>
+
+            <div class="w3-margin-bottom">
+                <span style="font-size: 80px;" class="bounce-animation">
+                    <i class="fa fa-lock w3-text-theme"></i>
+                </span>
+                <span style="font-size: 40px; margin-left: -20px;">😜</span>
+            </div>
+
+            <h1 class="w3-text-dark-grey" style="font-weight: 800; margin-top: 0;">Whoopsie! 403</h1>
+            <h3 class="w3-text-grey">Nice try, but you're not on the list!</h3>
+
+            <div class="w3-panel w3-pale-red w3-leftbar w3-border-red w3-margin-top w3-margin-bottom"
+                style="display: inline-block; padding: 10px 24px; border-radius: 8px;">
+                <p class="w3-large">
+                    {% if exception %}
+                        "{{ exception }}"
+                    {% else %}
+                        Access Denied! Your VIP pass seems to be missing.
+                    {% endif %}
+                </p>
+            </div>
+
+            <p class="w3-text-grey w3-padding">
+                Even our servers have secrets! Don't look at me with those puppy eyes 🥺.<br>
+                How about we head back before things get awkward?
+            </p>
+
+            <div class="w3-padding-32">
+                <a href="/" class="w3-button w3-black w3-hover-theme w3-round-xxlarge w3-hover-shadow w3-padding-large"
+                    style="width: 250px; font-weight: bold;">
+                    <i class="fa fa-rocket"></i> Take Me Home, Scotty!
+                </a>
+            </div>
+
+            <div class="w3-small w3-text-grey">
+                <i class="fa fa-heart w3-text-red"></i> We still love you, though.
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
