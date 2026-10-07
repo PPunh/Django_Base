@@ -32,7 +32,7 @@ class Login(LoginView):
     '''user login using class base view (CBV)'''
 
     form_class = AuthenticationForm
-    template_name = 'login.html'
+    template_name = 'users/login.html'
     redirect_authenticated_user = True
 
     def get(self, request, *args, **kwargs):
@@ -66,7 +66,7 @@ class Login(LoginView):
     name='dispatch',
 )
 class Home(TemplateView):
-    template_name = "home.html"
+    template_name = "users/home.html"
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -91,7 +91,7 @@ class SuperUserCreation(FormView):
     """
         Using for Create First SuperUser
     """
-    template_name = "createsuperuser.html"
+    template_name = "users/createsuperuser.html"
 
     def get_success_url(self):
         messages.success(

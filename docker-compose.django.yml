@@ -37,6 +37,7 @@ services:
       fi && \
       chmod -R 777 /django-project/certs && \
       python3 manage.py wait_for_db && \
+      python3 manage.py makemigrations && \
       python3 manage.py migrate --noinput && \
       python3 manage.py collectstatic --noinput
       /venv/bin/python3 manage.py runserver 0.0.0.0:8001 &
