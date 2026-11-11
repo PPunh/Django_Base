@@ -1,16 +1,15 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Lao translation for Base-Django.
+# Copyright (C) 2026 THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 16:11+0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"POT-Creation-Date: 2026-11-11 16:26+0700\n"
+"PO-Revision-Date: 2026-11-11 16:30+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language-Team: Lao <LL@li.org>\n"
 "Language: lo\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,119 +18,255 @@ msgstr ""
 
 #: apps/common/models.py:13
 msgid "Phongsaly"
-msgstr ""
+msgstr "ຜົ້ງສາລີ"
 
 #: apps/common/models.py:14
 msgid "Luangnamtha"
-msgstr ""
+msgstr "ຫຼວງນ້ຳທາ"
 
 #: apps/common/models.py:15
 msgid "Borkeo"
-msgstr ""
+msgstr "ບໍ່ແກ້ວ"
 
 #: apps/common/models.py:16
 msgid "Oudomxay"
-msgstr ""
+msgstr "ອຸດົມໄຊ"
 
 #: apps/common/models.py:17
 msgid "Xayaburi"
-msgstr ""
+msgstr "ໄຊຍະບູລີ"
 
 #: apps/common/models.py:18
 msgid "Luangprabang"
-msgstr ""
+msgstr "ຫຼວງພະບາງ"
 
 #: apps/common/models.py:19
 msgid "Houaphan"
-msgstr ""
+msgstr "ຫົວພັນ"
 
 #: apps/common/models.py:20
 msgid "Xiangkhouang"
-msgstr ""
+msgstr "ຊຽງຂວາງ"
 
 #: apps/common/models.py:21
 msgid "Vientiane Province"
-msgstr ""
+msgstr "ແຂວງວຽງຈັນ"
 
 #: apps/common/models.py:22
 msgid "Vientiane Capital"
-msgstr ""
+msgstr "ນະຄອນຫຼວງວຽງຈັນ"
 
 #: apps/common/models.py:23
 msgid "Xaisomboun"
-msgstr ""
+msgstr "ໄຊສົມບູນ"
 
 #: apps/common/models.py:24
 msgid "Borlikhamxai"
-msgstr ""
+msgstr "ບໍລິຄຳໄຊ"
 
 #: apps/common/models.py:25
 msgid "Khammouan"
-msgstr ""
+msgstr "ຄຳມ່ວນ"
 
 #: apps/common/models.py:26
 msgid "Salavan"
-msgstr ""
+msgstr "ສາລະວັນ"
 
 #: apps/common/models.py:27
 msgid "Champasak"
-msgstr ""
+msgstr "ຈຳປາສັກ"
 
 #: apps/common/models.py:28
 msgid "Attapeu"
-msgstr ""
+msgstr "ອັດຕະປື"
 
 #: apps/common/models.py:33 apps/common/models.py:36 apps/common/models.py:63
 msgid "Province"
-msgstr ""
+msgstr "ແຂວງ"
 
 #: apps/common/models.py:37
 msgid "Provinces"
-msgstr ""
+msgstr "ແຂວງຕ່າງໆ"
 
 #: apps/common/models.py:48
 msgid "Name"
-msgstr ""
+msgstr "ຊື່"
 
 #: apps/common/models.py:49
 msgid "Surname"
-msgstr ""
+msgstr "ນາມສະກຸນ"
 
 #: apps/common/models.py:52
 msgid "Phone number must be exactly 8 digits"
-msgstr ""
+msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກພໍດີ"
 
 #: apps/common/models.py:57
 msgid "Phone Number"
-msgstr ""
+msgstr "ເບີໂທລະສັບ"
 
 #: apps/common/models.py:59
 msgid "Address"
-msgstr ""
+msgstr "ທີ່ຢູ່"
 
 #: apps/common/models.py:68 apps/common/models.py:69
 msgid "Personal Information"
-msgstr ""
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
 
 #: apps/common/models.py:78
 msgid "Profile Picture"
-msgstr ""
+msgstr "ຮູບໂປຣໄຟລ໌"
 
 #: apps/common/models.py:117
 msgid "Created By"
-msgstr ""
+msgstr "ສ້າງໂດຍ"
 
 #: apps/common/models.py:122
 msgid "Created Date"
-msgstr ""
+msgstr "ວັນທີສ້າງ"
 
 #: apps/common/models.py:129
 msgid "Modified By"
-msgstr ""
+msgstr "ແກ້ໄຂໂດຍ"
 
 #: apps/common/models.py:134
 msgid "Modified Date"
-msgstr ""
+msgstr "ວັນທີແກ້ໄຂ"
+
+#: apps/users/models.py:16
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+#: apps/users/models.py:17 templates/partial/nav/nav-admin.html:26
+msgid "Users"
+msgstr "ຜູ້ໃຊ້"
+
+#: apps/users/models.py:22
+msgid "Phone number must be 8 digits."
+msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກ."
+
+#: apps/users/models.py:32
+msgid "A user with that phone number already exists."
+msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ເບີໂທລະສັບນີ້ຢູ່ແລ້ວ."
+
+#: apps/users/models.py:39
+msgid "A user with that email address already exists."
+msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ທີ່ຢູ່ອີເມວນີ້ຢູ່ແລ້ວ."
+
+#: apps/users/models.py:54
+msgid "IS USER"
+msgstr "ເປັນຜູ້ໃຊ້"
+
+#: apps/users/models.py:58
+msgid "IS ADMIN"
+msgstr "ເປັນຜູ້ດູແລລະບົບ"
+
+#: apps/users/models.py:90
+msgid "Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/users/models.py:91
+msgid "Profiles"
+msgstr "ໂປຣໄຟລ໌ທັງໝົດ"
+
+#: apps/users/models.py:94
+msgid "English"
+msgstr "ພາສາອັງກິດ"
+
+#: apps/users/models.py:95
+msgid "Lao"
+msgstr "ພາສາລາວ"
+
+#: apps/users/models.py:99
+msgid "dark"
+msgstr "ໂຫມດມືດ"
+
+#: apps/users/models.py:100
+msgid "black"
+msgstr "ສີດຳ"
+
+#: apps/users/models.py:101
+msgid "blue"
+msgstr "ສີຟ້າ"
+
+#: apps/users/models.py:102
+msgid "light blue"
+msgstr "ສີຟ້າອ່ອນ"
+
+#: apps/users/models.py:103
+msgid "blue grey"
+msgstr "ສີເທົາອົມຟ້າ"
+
+#: apps/users/models.py:104
+msgid "red"
+msgstr "ສີແດງ"
+
+#: apps/users/models.py:105
+msgid "brown"
+msgstr "ສີນ້ຳຕານ"
+
+#: apps/users/models.py:106
+msgid "cyan"
+msgstr "ສີຟ້າຂຽວ"
+
+#: apps/users/models.py:107
+msgid "grey"
+msgstr "ສີເທົາ"
+
+#: apps/users/models.py:108
+msgid "dark grey"
+msgstr "ສີເທົາເຂັ້ມ"
+
+#: apps/users/models.py:109
+msgid "orange"
+msgstr "ສີສົ້ມ"
+
+#: apps/users/models.py:110
+msgid "deep orange"
+msgstr "ສີສົ້ມເຂັ້ມ"
+
+#: apps/users/models.py:111
+msgid "purple"
+msgstr "ສີມ່ວງ"
+
+#: apps/users/models.py:112
+msgid "deep purple"
+msgstr "ສີມ່ວງເຂັ້ມ"
+
+#: apps/users/models.py:113
+msgid "green"
+msgstr "ສີຂຽວ"
+
+#: apps/users/models.py:114
+msgid "light green"
+msgstr "ສີຂຽວອ່ອນ"
+
+#: apps/users/models.py:115
+msgid "indigo"
+msgstr "ສີຄາມ"
+
+#: apps/users/models.py:116
+msgid "khaki"
+msgstr "ສີກາກີ"
+
+#: apps/users/models.py:117
+msgid "lime"
+msgstr "ສີຂຽວມະນາວ"
+
+#: apps/users/models.py:118
+msgid "pink"
+msgstr "ສີບົວ"
+
+#: apps/users/models.py:119
+msgid "teal"
+msgstr "ສີຂຽວອົມຟ້າ"
+
+#: apps/users/models.py:120
+msgid "yellow"
+msgstr "ສີເຫຼືອງ"
+
+#: apps/users/models.py:121
+msgid "amber"
+msgstr "ສີເຫຼືອງອຳພັນ"
 
 #: apps/users/templates/users/home.html:15
 msgid "Dashboard Overview"
@@ -177,6 +312,11 @@ msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme-d3</code>"
 msgid "Dark Shade Action"
 msgstr "ປຸ່ມສີເຂັ້ມ"
 
+#: apps/users/templates/users/login.html:22
+#: templates/partial/nav/nav-admin.html:13
+msgid "Base-Django"
+msgstr "ລະບົບພື້ນຖານ"
+
 #: apps/users/templates/users/login.html:24
 msgid "Please sign in to your account"
 msgstr "ກະລຸນາເຂົ້າລະບົບບັນຊີຂອງທ່ານ"
@@ -201,17 +341,9 @@ msgstr "ເຂົ້າລະບົບ"
 msgid "Language"
 msgstr "ພາສາ"
 
-#: templates/partial/nav/nav-admin.html:13
-msgid "Base-Django"
-msgstr "ລະບົບພື້ນຖານ"
-
 #: templates/partial/nav/nav-admin.html:21
 msgid "Home"
 msgstr "ໜ້າຫຼັກ"
-
-#: templates/partial/nav/nav-admin.html:26
-msgid "Users"
-msgstr "ຜູ້ໃຊ້"
 
 #: templates/partial/nav/nav-admin.html:34
 msgid "Sign Out"

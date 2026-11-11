@@ -6,19 +6,20 @@ from dateutil.relativedelta import relativedelta
 from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password, is_password_usable
 from django.contrib.auth.models import AbstractUser
+from django.utils.translation import gettext_lazy as _
 
 
 class User(AbstractUser):
     '''custom user model inherited from default Django AUTH User model'''
 
     class Meta:
-        verbose_name = 'User'
-        verbose_name_plural = 'Users'
+        verbose_name = _('User')
+        verbose_name_plural = _('Users')
 
     # regular expression: all number, total 8 digits, use for validate phone number input
     phone_regex = RegexValidator(
         regex=r"^\d{8}$",  # Exactly 8 digits
-        message="Phone number must be 8 digits.",
+        message=_("Phone number must be 8 digits."),
     )
 
     # add phone number as extra field
@@ -28,14 +29,14 @@ class User(AbstractUser):
         unique=True,
         validators=[phone_regex],
         null=True, blank=True,
-        error_messages={"unique": "A user with that phone number already exists.",},
+        error_messages={"unique": _("A user with that phone number already exists."),},
     )
 
     # make email field to be unique, default django auth allow duplicated email address
     email = models.EmailField(
         max_length=60,
         unique=True,
-        error_messages={"unique": "A user with that email address already exists.",},
+        error_messages={"unique": _("A user with that email address already exists."),},
     )
 
     # now when create an user account, it requires email too. Note: username is always required by Django
@@ -50,11 +51,11 @@ class User(AbstractUser):
     )
     is_user = models.BooleanField(
         default = False,
-        verbose_name = 'IS USER',
+        verbose_name = _('IS USER'),
     )
     is_admin = models.BooleanField(
         default = False,
-        verbose_name = 'IS ADMIN',
+        verbose_name = _('IS ADMIN'),
     )
 
     def save(self, *args, request=None, **kwargs):
@@ -86,38 +87,38 @@ class User(AbstractUser):
 
 class Profile(models.Model):
     class Meta:
-        verbose_name = 'Profile'
-        verbose_name_plural = 'Profiles'
+        verbose_name = _('Profile')
+        verbose_name_plural = _('Profiles')
 
     LANGUAGE_CHOICES = [
-        ('en', 'English'),
-        ('lo', 'Lao'),
+        ('en', _('English')),
+        ('lo', _('Lao')),
     ] # 'en' or 'lo' is the value stored in the databas not English or Lao
 
     COLOR_CHOICES = [
-        ('w3-theme-dark.css', 'dark'),
-        ('w3-theme-black.css', 'black'),
-        ('w3-theme-blue.css', 'blue'),
-        ('w3-theme-light-blue.css', 'light blue'),
-        ('w3-theme-blue-grey.css', 'blue grey'),
-        ('w3-theme-red.css', 'red'),
-        ('w3-theme-brown.css', 'brown'),
-        ('w3-theme-cyan.css', 'cyan'),
-        ('w3-theme-grey.css', 'grey'),
-        ('w3-theme-dark-grey.css', 'dark grey'),
-        ('w3-theme-orange.css', 'orange'),
-        ('w3-theme-deep-orange.css', 'deep orange'),
-        ('w3-theme-purple.css', 'purple'),
-        ('w3-theme-deep-purple.css', 'deep purple'),
-        ('w3-theme-green.css', 'green'),
-        ('w3-theme-light-green.css', 'light green'),
-        ('w3-theme-indigo.css', 'indigo'),
-        ('w3-theme-khaki.css', 'khaki'),
-        ('w3-theme-lime.css', 'lime'),
-        ('w3-theme-pink.css', 'pink'),
-        ('w3-theme-teal.css', 'teal'),
-        ('w3-theme-yellow.css', 'yellow'),
-        ('w3-theme-amber.css', 'amber'),
+        ('w3-theme-dark.css', _('dark')),
+        ('w3-theme-black.css', _('black')),
+        ('w3-theme-blue.css', _('blue')),
+        ('w3-theme-light-blue.css', _('light blue')),
+        ('w3-theme-blue-grey.css', _('blue grey')),
+        ('w3-theme-red.css', _('red')),
+        ('w3-theme-brown.css', _('brown')),
+        ('w3-theme-cyan.css', _('cyan')),
+        ('w3-theme-grey.css', _('grey')),
+        ('w3-theme-dark-grey.css', _('dark grey')),
+        ('w3-theme-orange.css', _('orange')),
+        ('w3-theme-deep-orange.css', _('deep orange')),
+        ('w3-theme-purple.css', _('purple')),
+        ('w3-theme-deep-purple.css', _('deep purple')),
+        ('w3-theme-green.css', _('green')),
+        ('w3-theme-light-green.css', _('light green')),
+        ('w3-theme-indigo.css', _('indigo')),
+        ('w3-theme-khaki.css', _('khaki')),
+        ('w3-theme-lime.css', _('lime')),
+        ('w3-theme-pink.css', _('pink')),
+        ('w3-theme-teal.css', _('teal')),
+        ('w3-theme-yellow.css', _('yellow')),
+        ('w3-theme-amber.css', _('amber')),
     ]
 
     # 1-to-1 relationship this Profile model to User model

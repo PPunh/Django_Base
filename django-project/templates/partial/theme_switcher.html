@@ -1,21 +1,105 @@
-<div class="w3-bar-item" style="padding: 0 6px;">
-    <div style="display: flex; align-items: center; gap: 6px;">
-        <i class="fa fa-paint-brush w3-text-theme" title="Theme"></i>
-        <select onchange="window.location.href='{% url 'users:set_theme' %}?theme=' + encodeURIComponent(this.value);"
-            class="w3-select w3-border w3-border-theme w3-round w3-small"
-            style="padding: 4px 8px; height: 36px; width: auto; cursor: pointer; font-size: 0.85rem;"
-            aria-label="Theme Selector">
+<style>
+    .theme-switcher {
+        position: relative;
+        padding: 0 6px;
+    }
+
+    .theme-switcher summary {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        height: 36px;
+        padding: 0 10px;
+        border: 1px solid currentColor;
+        border-radius: 8px;
+        cursor: pointer;
+        list-style: none;
+        white-space: nowrap;
+    }
+
+    .theme-switcher summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .theme-switcher-menu {
+        position: absolute;
+        top: calc(100% + 6px);
+        right: 6px;
+        z-index: 1100;
+        width: 190px;
+        max-height:  min(70vh, 420px);
+        overflow-y: auto;
+        border: 1px solid rgba(127, 127, 127, 0.35);
+        border-radius: 10px;
+        padding: 6px;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    }
+
+    .theme-switcher-option {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 9px 10px;
+        border-radius: 7px;
+        text-decoration: none;
+        white-space: nowrap;
+    }
+
+    .theme-swatch {
+        display: inline-block;
+        flex: 0 0 14px;
+        width: 14px;
+        height: 14px;
+        border: 1px solid rgba(127, 127, 127, 0.55);
+        border-radius: 50%;
+    }
+
+    .theme-swatch-dark { background-color: #1e2025; }
+    .theme-swatch-black { background-color: #000000; }
+    .theme-swatch-blue { background-color: #2196f3; }
+    .theme-swatch-light-blue { background-color: #87ceeb; }
+    .theme-swatch-blue-grey { background-color: #607d8b; }
+    .theme-swatch-red { background-color: #f44336; }
+    .theme-swatch-brown { background-color: #795548; }
+    .theme-swatch-cyan { background-color: #00bcd4; }
+    .theme-swatch-grey { background-color: #9e9e9e; }
+    .theme-swatch-dark-grey { background-color: #616161; }
+    .theme-swatch-orange { background-color: #ff9800; }
+    .theme-swatch-deep-orange { background-color: #ff5722; }
+    .theme-swatch-purple { background-color: #9c27b0; }
+    .theme-swatch-deep-purple { background-color: #673ab7; }
+    .theme-swatch-green { background-color: #4caf50; }
+    .theme-swatch-light-green { background-color: #8bc34a; }
+    .theme-swatch-indigo { background-color: #3f51b5; }
+    .theme-swatch-khaki { background-color: #f0e68c; }
+    .theme-swatch-lime { background-color: #cddc39; }
+    .theme-swatch-pink { background-color: #e91e63; }
+    .theme-swatch-teal { background-color: #009688; }
+    .theme-swatch-yellow { background-color: #ffeb3b; }
+    .theme-swatch-amber { background-color: #ffc107; }
+</style>
+
+<div class="w3-bar-item theme-switcher">
+    <details>
+        <summary class="w3-text-theme w3-hover-theme" aria-label="Select theme">
+            <i class="fa fa-paint-brush" aria-hidden="true"></i>
+            <span class="theme-swatch theme-swatch-{% for file, name in available_themes %}{% if theme_color == file %}{{ file|cut:'w3-theme-'|cut:'.css' }}{% endif %}{% endfor %}"></span>
+            <span>
+                {% for file, name in available_themes %}
+                    {% if theme_color == file %}{{ name|title }}{% endif %}
+                {% endfor %}
+            </span>
+        </summary>
+        <div class="theme-switcher-menu w3-theme-l4">
             {% for file, name in available_themes %}
-            <option value="{{ file }}" {% if theme_color == file %}selected{% endif %}>
-                {% if file == 'w3-theme-dark.css' %}
-                    🌙
-                {% elif file == 'w3-theme-black.css' %}
-                    ⬛
-                {% else %}
-                    🎨
-                {% endif %} | {{ name|title }}
-            </option>
+                <a class="theme-switcher-option w3-hover-theme{% if theme_color == file %} w3-text-theme{% endif %}"
+                    href="{% url 'users:set_theme' %}?theme={{ file|urlencode }}"
+                    {% if theme_color == file %}aria-current="true"{% endif %}>
+                    <span class="theme-swatch theme-swatch-{{ file|cut:'w3-theme-'|cut:'.css' }}" aria-hidden="true"></span>
+                    <span>{{ name|title }}</span>
+                    {% if theme_color == file %}<i class="fa fa-check" aria-hidden="true"></i>{% endif %}
+                </a>
             {% endfor %}
-        </select>
-    </div>
+        </div>
+    </details>
 </div>
