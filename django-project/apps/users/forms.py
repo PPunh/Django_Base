@@ -11,7 +11,7 @@ from .models import User
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
-        max_length=100, 
+        max_length=100,
         label="Username / Email / Phone number"
     )
     password = forms.CharField(widget=forms.PasswordInput)
@@ -39,8 +39,8 @@ class CustomUserForm(UserCreationForm):
             'password1',
             'password2',
             'is_active',
-            'is_sale',
-            'is_finance',
+            'is_user',
+            'is_admin',
             'is_superuser',
             # 'is_staff',
         ]
@@ -51,8 +51,8 @@ class CustomUserForm(UserCreationForm):
             'password1': 'Password',
             'password2': 'Confirm Password',
             'is_active': 'Active',
-            'is_sale':'Is Sale',
-            'is_finance':'Is Finance',
+            'is_user':'Is User',
+            'is_admin':'Is Admin',
             'is_superuser': 'Superuser',
             # 'is_staff': 'Staff',
         }
@@ -62,12 +62,12 @@ class CustomUserForm(UserCreationForm):
                     'class': 'w3-check',
                 }
             ),
-            'is_sale': forms.CheckboxInput(
+            'is_user': forms.CheckboxInput(
                 attrs={
                     'class': 'w3-check',
                 }
             ),
-            'is_finance': forms.CheckboxInput(
+            'is_admin': forms.CheckboxInput(
                 attrs = {
                     'class':'w3-check',
                 }

@@ -37,25 +37,28 @@
 
         {% block extra_css %}{% endblock %}
     </head>
-    <body class="lao-noto" style="margin-top: 100px; height: 100vh;">
-        {% comment %} Top Navigation {% endcomment %}
-        {% block navigation_top %}
-            {% if user.is_authenticated %}
-                {% include 'navigation_top.html' %}
-            {% endif %}
-        {% endblock %}
+        <body class="lao-noto">
+            {# Top Navigation #}
+        <nav class="w3-animate-left">
+            {% block main-navigation %}
+                {% if user.is_authenticated %}
+                    {% include 'partial/nav/nav-admin.html' %}
+                {% endif %}
+            {% endblock %}
+        </nav>
+        <div class="w3-row w3-animate-left" style="margin-top:65px;">
+            <nav>
+                {% block navigation_left %}
+                    {% if user.is_authenticated %}
+                        {% include 'partial/nav/side-nav/side-nav-admin.html' %}
+                    {% endif %}
+                {% endblock %}
+            </nav>
 
-        {% comment %} Hero {% endcomment %}
-        {% block hero %}
-        {% endblock %}
-
-        {% comment %} left Navigation {% endcomment %}
-        {% block navigation_left %}
-        {% endblock %}
-
-        {% comment %} Main content of the page {% endcomment %}
-        {% block main-content %}
-        {% endblock %}
+            <main class="w3-main w3-container w3-animate-bottom" style="margin-left: 20%;">
+                {% block main-content %}{% endblock %}
+            </main>
+        </div>
 
         {% comment %} page footer {% endcomment %}
         {% block footer %}
@@ -66,7 +69,7 @@
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
         <script src="{% static 'js/navigation_top.js' %}"></script>
         <script src="{% static 'js/root_js.js' %}"></script>
-        
+
         {% comment %} additional JS libs {% endcomment %}
         {% block js %}
         {% endblock %}

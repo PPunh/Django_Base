@@ -115,10 +115,36 @@ MIDDLEWARE = [
 
     # custom libs
     'middleware.CustomRateLimitMeaage', # display custom text when a user or an IP is blocked
+    # must be placed AFTER AuthenticationMiddleware (needs request.user)
+    'middleware.BaseLoginRequiredMiddleware', # force login on every page except the exempt ones
     'apps.users.middleware.CurrentUserMiddleware',
 ]
 
 ROOT_URLCONF = 'urls'
+
+# URL to redirect after login if the contrib.auth.views.login view gets no "next" parameter
+LOGIN_REDIRECT_URL = reverse_lazy('users:home')
+
+# URL to redirect the user to login page if that pare require user login to access
+LOGIN_URL = reverse_lazy('users:login')
+
+# URL to redirect the user to after logout
+LOGOUT_URL = reverse_lazy('users:login')
+
+# Pages that do NOT require login, used by middleware.BaseLoginRequiredMiddleware
+# format: "<app_name>:<url_name>"  (the login page itself is always allowed)
+LOGIN_EXEMPT_URL_NAMES = [
+    "users:login",
+    "users:logout",
+    # "users:register",
+    # "users:password_reset",
+    # "product:sale",
+]
+
+# Exempt a whole namespace (every url inside that app_name)
+LOGIN_EXEMPT_NAMESPACES = [
+    # "api_public",
+]
 
 TEMPLATES = [
     {
@@ -278,15 +304,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# URL to redirect after login if the contrib.auth.views.login view gets no "next" parameter
-LOGIN_REDIRECT_URL = reverse_lazy('users:home')
-
-# URL to redirect the user to login page if that pare require user login to access
-LOGIN_URL = reverse_lazy('users:login')
-
-# URL to redirect the user to after logout
-LOGOUT_URL = reverse_lazy('users:login')
-
 REST_FRAMEWORK = {
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
     'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend'],
@@ -294,7 +311,8 @@ REST_FRAMEWORK = {
     'PAGE_SIZE': 20,
 }
 
-SPECTACULAR_SETTING = {
+# NOTE: the setting name must end with "S" (SPECTACULAR_SETTINGS)
+SPECTACULAR_SETTINGS = {
     'TITLE': 'API',
     'DESCRIPTION': 'API',
     'SERVE_INCLUDE_SCHEMA': False,
@@ -341,8 +359,10 @@ RATE_LIMIT = '1000/5m' # 1000 requests within 5 minutes from single IP
 # Security settings
 SESSION_COOKIE_HTTPONLY = True
 # CSRF_COOKIE_HTTPONLY = True
-SESSION_COOKIE_SECURE = True
-CSRF_COOKIE_SECURE = True
+# Secure cookies only in production (HTTPS). In DEBUG over plain http some browsers
+# drop the cookie, so login never sticks and the user gets bounced back to the login page.
+SESSION_COOKIE_SECURE = not DEBUG
+CSRF_COOKIE_SECURE = not DEBUG
 SESSION_COOKIE_SAMESITE = 'Lax'
 CSRF_COOKIE_SAMESITE = 'Lax'
 SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')

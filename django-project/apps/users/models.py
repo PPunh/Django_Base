@@ -40,15 +40,13 @@ class User(AbstractUser):
         null=True, blank=True,
         related_name='modified_users'
     )
-    is_sale = models.BooleanField(
+    is_user = models.BooleanField(
         default = False,
-        verbose_name = 'IS SALE',
-        help_text = 'Designates whether the user belongs to the SALE team.'
+        verbose_name = 'IS USER',
     )
-    is_finance = models.BooleanField(
+    is_admin = models.BooleanField(
         default = False,
-        verbose_name = 'IS FINANCE',
-        help_text = 'Designates whether the user belongs to the FINANCE team.'
+        verbose_name = 'IS ADMIN',
     )
 
     def save(self, *args, request=None, **kwargs):

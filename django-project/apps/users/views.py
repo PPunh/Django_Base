@@ -16,6 +16,7 @@ from django.views.decorators.cache import never_cache
 from django_ratelimit.decorators import ratelimit
 from django.conf import settings
 from django.utils import timezone
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from . import forms
 from . import models
@@ -26,8 +27,6 @@ from .forms import CustomUserForm, SuperUserCreationForm
 logger = logging.getLogger(__name__)
 
 # LoginView
-@method_decorator(never_cache, name='dispatch')
-@method_decorator(ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True), name='dispatch')
 class Login(LoginView):
     '''user login using class base view (CBV)'''
 
@@ -61,11 +60,7 @@ class Login(LoginView):
         messages.error(self.request, 'Username / Email / Phone number / Password is required')
         return super().form_invalid(form)  # Re-render the form with errors message
 
-@method_decorator(
-    ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True),
-    name='dispatch',
-)
-class Home(TemplateView):
+class Home(LoginRequiredMixin, TemplateView):
     template_name = "users/home.html"
 
     def get_context_data(self, **kwargs):
@@ -83,10 +78,6 @@ def logout_view(request):
     return redirect('users:login')
 
 
-@method_decorator(
-    ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True),
-    name='dispatch'
-)
 class SuperUserCreation(FormView):
     """
         Using for Create First SuperUser
