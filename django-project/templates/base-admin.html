@@ -1,4 +1,5 @@
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -55,10 +56,6 @@
                 {% block main-content %}{% endblock %}
             </main>
         </div>
-
-        {% comment %} page footer {% endcomment %}
-        {% block footer %}
-        {% endblock %}
 
         {% comment %} Main JS libs {% endcomment %}
         <script src="{% static 'js/jquery-3.7.1.min.js' %}"></script>

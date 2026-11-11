@@ -1,0 +1,218 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-11-11 16:11+0700\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: lo\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: apps/common/models.py:13
+msgid "Phongsaly"
+msgstr ""
+
+#: apps/common/models.py:14
+msgid "Luangnamtha"
+msgstr ""
+
+#: apps/common/models.py:15
+msgid "Borkeo"
+msgstr ""
+
+#: apps/common/models.py:16
+msgid "Oudomxay"
+msgstr ""
+
+#: apps/common/models.py:17
+msgid "Xayaburi"
+msgstr ""
+
+#: apps/common/models.py:18
+msgid "Luangprabang"
+msgstr ""
+
+#: apps/common/models.py:19
+msgid "Houaphan"
+msgstr ""
+
+#: apps/common/models.py:20
+msgid "Xiangkhouang"
+msgstr ""
+
+#: apps/common/models.py:21
+msgid "Vientiane Province"
+msgstr ""
+
+#: apps/common/models.py:22
+msgid "Vientiane Capital"
+msgstr ""
+
+#: apps/common/models.py:23
+msgid "Xaisomboun"
+msgstr ""
+
+#: apps/common/models.py:24
+msgid "Borlikhamxai"
+msgstr ""
+
+#: apps/common/models.py:25
+msgid "Khammouan"
+msgstr ""
+
+#: apps/common/models.py:26
+msgid "Salavan"
+msgstr ""
+
+#: apps/common/models.py:27
+msgid "Champasak"
+msgstr ""
+
+#: apps/common/models.py:28
+msgid "Attapeu"
+msgstr ""
+
+#: apps/common/models.py:33 apps/common/models.py:36 apps/common/models.py:63
+msgid "Province"
+msgstr ""
+
+#: apps/common/models.py:37
+msgid "Provinces"
+msgstr ""
+
+#: apps/common/models.py:48
+msgid "Name"
+msgstr ""
+
+#: apps/common/models.py:49
+msgid "Surname"
+msgstr ""
+
+#: apps/common/models.py:52
+msgid "Phone number must be exactly 8 digits"
+msgstr ""
+
+#: apps/common/models.py:57
+msgid "Phone Number"
+msgstr ""
+
+#: apps/common/models.py:59
+msgid "Address"
+msgstr ""
+
+#: apps/common/models.py:68 apps/common/models.py:69
+msgid "Personal Information"
+msgstr ""
+
+#: apps/common/models.py:78
+msgid "Profile Picture"
+msgstr ""
+
+#: apps/common/models.py:117
+msgid "Created By"
+msgstr ""
+
+#: apps/common/models.py:122
+msgid "Created Date"
+msgstr ""
+
+#: apps/common/models.py:129
+msgid "Modified By"
+msgstr ""
+
+#: apps/common/models.py:134
+msgid "Modified Date"
+msgstr ""
+
+#: apps/users/templates/users/home.html:15
+msgid "Dashboard Overview"
+msgstr "ພາບລວມແຜງຄວບຄຸມ"
+
+#: apps/users/templates/users/home.html:17
+msgid "Active Theme"
+msgstr "ຮູບແບບສີທີ່ໃຊ້ຢູ່"
+
+#: apps/users/templates/users/home.html:25
+msgid "Primary Theme"
+msgstr "ຮູບແບບສີຫຼັກ"
+
+#: apps/users/templates/users/home.html:26
+msgid "Styled with <code>.w3-theme</code>"
+msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme</code>"
+
+#: apps/users/templates/users/home.html:28
+msgid "Action Button"
+msgstr "ປຸ່ມດຳເນີນການ"
+
+#: apps/users/templates/users/home.html:35
+msgid "Light Variant"
+msgstr "ຮູບແບບສີອ່ອນ"
+
+#: apps/users/templates/users/home.html:36
+msgid "Styled with <code>.w3-theme-l4</code> and <code>.w3-border-theme</code>"
+msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme-l4</code> ແລະ <code>.w3-border-theme</code>"
+
+#: apps/users/templates/users/home.html:38
+msgid "Theme Button"
+msgstr "ປຸ່ມຮູບແບບສີ"
+
+#: apps/users/templates/users/home.html:45
+msgid "Dark Variant"
+msgstr "ຮູບແບບສີເຂັ້ມ"
+
+#: apps/users/templates/users/home.html:46
+msgid "Styled with <code>.w3-theme-d3</code>"
+msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme-d3</code>"
+
+#: apps/users/templates/users/home.html:48
+msgid "Dark Shade Action"
+msgstr "ປຸ່ມສີເຂັ້ມ"
+
+#: apps/users/templates/users/login.html:24
+msgid "Please sign in to your account"
+msgstr "ກະລຸນາເຂົ້າລະບົບບັນຊີຂອງທ່ານ"
+
+#: apps/users/templates/users/login.html:29
+msgid "Username"
+msgstr "ຊື່ຜູ້ໃຊ້"
+
+#: apps/users/templates/users/login.html:32
+msgid "Username / Email / Phone"
+msgstr "ຊື່ຜູ້ໃຊ້ / ອີເມວ / ເບີໂທ"
+
+#: apps/users/templates/users/login.html:36
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
+#: apps/users/templates/users/login.html:45
+msgid "Sign In"
+msgstr "ເຂົ້າລະບົບ"
+
+#: templates/partial/lang_switcher.html:10
+msgid "Language"
+msgstr "ພາສາ"
+
+#: templates/partial/nav/nav-admin.html:13
+msgid "Base-Django"
+msgstr "ລະບົບພື້ນຖານ"
+
+#: templates/partial/nav/nav-admin.html:21
+msgid "Home"
+msgstr "ໜ້າຫຼັກ"
+
+#: templates/partial/nav/nav-admin.html:26
+msgid "Users"
+msgstr "ຜູ້ໃຊ້"
+
+#: templates/partial/nav/nav-admin.html:34
+msgid "Sign Out"
+msgstr "ອອກຈາກລະບົບ"

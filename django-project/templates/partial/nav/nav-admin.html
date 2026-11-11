@@ -1,20 +1,16 @@
 {% load static %}
+{% load i18n %}
 <!-- Top Navigation -->
 <nav class="w3-bar w3-white w3-card w3-top"
     style="height: 64px; left: 0; right: 0; width: auto; box-sizing: border-box; display: flex; justify-content: space-between; align-items: center; padding: 0 16px; overflow: visible !important; z-index: 1000;">
 
     <!-- Left: Hamburger (mobile) + Brand -->
     <div class="w3-flex" style="display: flex; align-items: center;">
-        <button id="menuToggle" class="w3-hide-large w3-button w3-large w3-text-theme w3-round-large"
-            style="display: flex; align-items: center; justify-content: center; width: 44px; height: 44px;"
-            onclick="toggleSidebar()" aria-label="Open menu">
-            <span class="material-icons">menu</span>
-        </button>
         <a href="#" class="w3-bar-item w3-button w3-hover-none w3-text-theme"
             style="display: flex; align-items: center; gap: 8px;">
             <img src="{% static 'images/Logo-placeholder-400x400.png' %}" class="w3-image w3-round"
                 style="max-width: 200px; max-height: 50px; object-fit: contain;">
-            <strong class="w3-large" style="letter-spacing: -0.5px;">Base-Django</strong>
+            <strong class="w3-large" style="letter-spacing: -0.5px;">{% trans "Base-Django" %}</strong>
         </a>
     </div>
 
@@ -22,19 +18,20 @@
     <div class="w3-hide-small" style="display: flex; align-items: center; gap: 8px; margin-left: auto;">
         <a href="{% url 'users:home' %}" class="w3-button w3-round-large w3-theme-l4 w3-hover-theme">
             <i class="fa fa-home fa-solid w3-margin-right"></i>
-            Home
+            {% trans "Home" %}
         </a>
 
         <a href="#" class="w3-button w3-round-large w3-theme-l4 w3-hover-theme">
             <i class="fa fa-user fa-solid w3-margin-right"></i>
-            Users
+            {% trans "Users" %}
         </a>
 
+        {% include 'partial/lang_switcher.html' %}
         {% include 'partial/theme_switcher.html' %}
 
         <a href="{% url 'users:logout' %}"
             class="w3-button w3-round-large w3-text-red w3-border w3-border-red w3-hover-red w3-margin-left w3-margin-right"
-            title="Sign Out">
+            title="{% trans 'Sign Out' %}">
             <i class="fa fa-sign-out"></i>
         </a>
     </div>

@@ -86,6 +86,7 @@ INSTALLED_APPS = [
     # custom apps
     # usage: apps.app_name
     'apps.users', # custom users app, extending the default built-in Django Auth
+    'apps.common',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -137,6 +138,7 @@ LOGIN_EXEMPT_URL_NAMES = [
     "users:login",
     "users:logout",
     "users:set_theme",
+    "set_language",
     # "users:register",
     # "users:password_reset",
     # "product:sale",
@@ -235,12 +237,13 @@ LANGUAGE_CODE = 'en'
 # AVAILABLE LANGUAGES
 LANGUAGES = [
     ('en', 'English'),
+    ('lo', 'Lao'),
 ]
 
 # LOCALE PATHS
-# LOCALE_PATHS = [
-#     BASE_DIR / 'locale',
-# ]
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
 
 
 # j: Day of the month without leading zeros (1 to 31)

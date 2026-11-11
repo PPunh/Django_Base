@@ -1,0 +1,10 @@
+# coding=utf-8
+from django import forms
+from django.forms import ModelForm
+
+
+class ModelNameForm(forms.ModelForm):
+
+    class Meta:
+        model = None
+        fields = []

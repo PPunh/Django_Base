@@ -68,7 +68,18 @@ class Home(TemplateView):
 @require_http_methods(["GET", "POST"])
 @ratelimit(key='header:X-Forwarded-For', rate=settings.RATE_LIMIT, block=True)
 def logout_view(request):
+    theme = request.session.get('theme_color')
+    if request.user.is_authenticated:
+        theme = (
+            models.Profile.objects.filter(user=request.user)
+            .values_list('theme_color', flat=True)
+            .first()
+            or theme
+        )
+
     logout(request)
+    if theme in {color for color, _ in models.Profile.COLOR_CHOICES}:
+        request.session['theme_color'] = theme
     messages.success(request, 'You have successfully logged out')
     return redirect('users:login')
 

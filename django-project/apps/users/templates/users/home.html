@@ -1,6 +1,7 @@
 {% extends "base-admin.html" %}
 {% load static %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block navigation_left %}
     {% if user.is_authenticated %}
@@ -11,9 +12,9 @@
 {% block main-content %}
 <div class="w3-container w3-margin-top">
     <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
-        <h2 class="w3-text-theme"><strong>Dashboard Overview</strong></h2>
+        <h2 class="w3-text-theme"><strong>{% trans "Dashboard Overview" %}</strong></h2>
         <p class="w3-text-grey">
-            Active Theme: <span class="w3-tag w3-theme w3-round">{{ theme_color }}</span>
+            {% trans "Active Theme" %}: <span class="w3-tag w3-theme w3-round">{{ theme_color }}</span>
         </p>
     </div>
 
@@ -21,30 +22,30 @@
     <div class="w3-row-padding" style="margin: 0 -16px;">
         <div class="w3-third w3-margin-bottom">
             <div class="w3-card w3-round-large w3-theme w3-padding-large">
-                <h4><i class="fa fa-paint-brush w3-margin-right"></i>Primary Theme</h4>
-                <p>Styled with <code>.w3-theme</code></p>
+                <h4><i class="fa fa-paint-brush w3-margin-right"></i>{% trans "Primary Theme" %}</h4>
+                <p>{% blocktrans %}Styled with <code>.w3-theme</code>{% endblocktrans %}</p>
                 <button class="w3-button w3-white w3-text-theme w3-round w3-small" style="font-weight: bold;">
-                    Action Button
+                    {% trans "Action Button" %}
                 </button>
             </div>
         </div>
 
         <div class="w3-third w3-margin-bottom">
             <div class="w3-card w3-round-large w3-theme-l4 w3-padding-large w3-border w3-border-theme">
-                <h4 class="w3-text-theme"><i class="fa fa-sun-o w3-margin-right"></i>Light Variant</h4>
-                <p class="w3-text-grey">Styled with <code>.w3-theme-l4</code> and <code>.w3-border-theme</code></p>
+                <h4 class="w3-text-theme"><i class="fa fa-sun-o w3-margin-right"></i>{% trans "Light Variant" %}</h4>
+                <p class="w3-text-grey">{% blocktrans %}Styled with <code>.w3-theme-l4</code> and <code>.w3-border-theme</code>{% endblocktrans %}</p>
                 <button class="w3-button w3-theme w3-hover-theme w3-round w3-small">
-                    Theme Button
+                    {% trans "Theme Button" %}
                 </button>
             </div>
         </div>
 
         <div class="w3-third w3-margin-bottom">
             <div class="w3-card w3-round-large w3-theme-d3 w3-padding-large">
-                <h4><i class="fa fa-moon-o w3-margin-right"></i>Dark Variant</h4>
-                <p>Styled with <code>.w3-theme-d3</code></p>
+                <h4><i class="fa fa-moon-o w3-margin-right"></i>{% trans "Dark Variant" %}</h4>
+                <p>{% blocktrans %}Styled with <code>.w3-theme-d3</code>{% endblocktrans %}</p>
                 <button class="w3-button w3-theme-l1 w3-round w3-small">
-                    Dark Shade Action
+                    {% trans "Dark Shade Action" %}
                 </button>
             </div>
         </div>

@@ -19,8 +19,10 @@ urlpatterns = [
     path('api/schema/', SpectacularAPIView.as_view(), name='api-schema'),
     path('api/docs/', SpectacularSwaggerView.as_view(url_name='api-schema'), name='api-docs'),
     path('api/redocs/', SpectacularRedocView.as_view(url_name='api-schema'), name='api-redocs'),
+    path('i18n/', include('django.conf.urls.i18n')),
     path('select2/', include('django_select2.urls')),
     path('', include('apps.users.urls', namespace='users')),
+    path('common/', include('apps.common.urls', namespace='common')),
 ]
 
 # Static and Media files handling

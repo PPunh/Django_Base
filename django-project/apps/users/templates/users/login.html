@@ -1,6 +1,7 @@
 {% extends "base-user.html" %}
 {% load static %}
 {% load widget_tweaks %}
+{% load i18n %}
 
 {% block navigation_top %}
 {% endblock %}
@@ -9,7 +10,7 @@
 <div class="w3-container w3-row" style="height: 80vh;">
     <div class="w3-col l4 m6 s12 w3-display-center w3-margin-top" style="position: relative; float: none; margin: 0 auto;">
 
-        <div class="w3-padding-32 w3-white">
+        <div class="w3-card w3-round-large w3-padding-32 w3-theme-d5 w3-border w3-border-theme">
 
             <form method="post" class="w3-container w3-center">
                 {% csrf_token %}
@@ -18,30 +19,30 @@
                     <div>
                         <img src="{% static 'images/Logo-placeholder-400x400.png' %}" alt="logo" style="width: 120px;">
                     </div>
-                    <h2 class="w3-text-grey lao-noto" style="font-weight: 900; margin-top: 10px;">TOP VALUE SERVICE</h2>
-                    <p class="w3-text-gray">
-                        <i>Please login to your account</i>
+                    <h2 class="lao-noto" style="font-weight: 900; margin-top: 10px;">{% trans "Base-Django" %}</h2>
+                    <p class="">
+                        <i>{% trans "Please sign in to your account" %}</i>
                     </p>
                 </div>
 
-                <div class="w3-section">
-                    <label class="w3-small w3-text-grey"><b>Username</b></label>
+                <div class="w3-section w3-padding" style="width:80%; margin: 0 auto;">
+                    <label class="w3-small"><b>{% trans "Username" %}</b></label>
                     <input type="text" name="username" autofocus autocomplete="off"
                         class="w3-input w3-border-0 w3-light-grey w3-round w3-center"
-                        placeholder="Username / Email / Phone" required id="id_username">
+                        placeholder="{% trans 'Username / Email / Phone' %}" required id="id_username">
                 </div>
 
-                <div class="w3-section">
-                    <label class="w3-small w3-text-grey"><b>Password</b></label>
+                <div class="w3-section w3-padding" style="width:80%; margin: 0 auto;">
+                    <label class="w3-small"><b>{% trans "Password" %}</b></label>
                     <input type="password" name="password" autocomplete="off"
                         class="w3-input w3-border-0 w3-light-grey w3-round w3-center"
                         placeholder="**********" required id="id_password">
                 </div>
 
-                <div class="w3-section">
+                <div class="w3-section w3-padding" style="width:80%; margin: 0 auto;">
                     <button type="submit"
-                    class="w3-button w3-block w3-theme w3-round w3-padding-large w3-hover-black w3-hover-text-white w3-hover-shadow" style="font-weight: bold;">
-                        <span>Sign In</span> &nbsp;
+                    class="w3-button w3-block w3-theme-d2 w3-round w3-padding-large w3-hover-theme w3-hover-shadow" style="font-weight: bold;">
+                        <span>{% trans "Sign In" %}</span> &nbsp;
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
@@ -50,7 +51,8 @@
             <hr class="w3-border-grey" style="opacity: 0.2; margin: 20px 16px;">
 
             <div class="w3-container w3-center">
-                <p class="w3-text-grey w3-small">© {% now "Y" %} LOYSURYYA.PPunh@gmail.com</p>
+                {% include 'partial/lang_switcher.html' %}
+                <p class="w3-small">© {% now "Y" %} LOYSURYYA.PPunh@gmail.com</p>
             </div>
 
         </div>

@@ -14,7 +14,7 @@ router = DefaultRouter()
 urlpatterns = [
     path('create_super_12321/', views.SuperUserCreation.as_view(), name='create_super'),
     path('', views.Login.as_view(), name='login'),
-    path('home', views.Home.as_view(), name="home"),
+    path('home/', views.Home.as_view(), name="home"),
     path('logout/', views.logout_view, name='logout'),
     path('set-theme/', views.set_theme, name='set_theme'),
     path('api/', include(router.urls)),
