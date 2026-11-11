@@ -23,12 +23,20 @@ class User(AbstractUser):
 
     # add phone number as extra field
     # Use the regex validator above to check if the inputed phone number is number and total 8 digits
-    phone_number = models.CharField(max_length=8, unique=True, validators=[phone_regex],
-        null=True, blank=True, error_messages={"unique": "A user with that phone number already exists.",},)
+    phone_number = models.CharField(
+        max_length=8,
+        unique=True,
+        validators=[phone_regex],
+        null=True, blank=True,
+        error_messages={"unique": "A user with that phone number already exists.",},
+    )
 
     # make email field to be unique, default django auth allow duplicated email address
-    email = models.EmailField(max_length=60, unique=True,
-        error_messages={"unique": "A user with that email address already exists.",},)
+    email = models.EmailField(
+        max_length=60,
+        unique=True,
+        error_messages={"unique": "A user with that email address already exists.",},
+    )
 
     # now when create an user account, it requires email too. Note: username is always required by Django
     REQUIRED_FIELDS = ["email"]
@@ -87,6 +95,8 @@ class Profile(models.Model):
     ] # 'en' or 'lo' is the value stored in the databas not English or Lao
 
     COLOR_CHOICES = [
+        ('w3-theme-dark.css', 'dark'),
+        ('w3-theme-black.css', 'black'),
         ('w3-theme-blue.css', 'blue'),
         ('w3-theme-light-blue.css', 'light blue'),
         ('w3-theme-blue-grey.css', 'blue grey'),
@@ -107,6 +117,7 @@ class Profile(models.Model):
         ('w3-theme-pink.css', 'pink'),
         ('w3-theme-teal.css', 'teal'),
         ('w3-theme-yellow.css', 'yellow'),
+        ('w3-theme-amber.css', 'amber'),
     ]
 
     # 1-to-1 relationship this Profile model to User model

@@ -18,13 +18,12 @@
         {% comment %} a lightweight Google Material Design CSS libs {% endcomment %}
         <link href="{% static 'css/w3/w3.css' %}" rel="stylesheet">
         {% if theme_color %}
-            <link href="{% static 'css/w3/'|add:theme_color %}" rel="stylesheet">
+            <link id="w3-theme-css" href="{% static 'css/w3/'|add:theme_color %}" rel="stylesheet">
         {% else %}
-            <link href="{% static 'css/w3/w3-theme-blue.css' %}" rel="stylesheet">
+            <link id="w3-theme-css" href="{% static 'css/w3/w3-theme-blue.css' %}" rel="stylesheet">
         {% endif %}
 
         {% comment %} your own Custom CSS {% endcomment %}
-        <link rel="stylesheet" href="{% static 'css/users.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
         {% block css %}{% endblock %}
@@ -49,13 +48,10 @@
         <div class="w3-row w3-animate-left" style="margin-top:65px;">
             <nav>
                 {% block navigation_left %}
-                    {% if user.is_authenticated %}
-                        {% include 'partial/nav/side-nav/side-nav-admin.html' %}
-                    {% endif %}
                 {% endblock %}
             </nav>
 
-            <main class="w3-main w3-container w3-animate-bottom" style="margin-left: 20%;">
+            <main class="w3-main w3-container w3-animate-bottom" style="margin-left: 15%;">
                 {% block main-content %}{% endblock %}
             </main>
         </div>

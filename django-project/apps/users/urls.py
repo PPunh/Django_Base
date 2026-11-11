@@ -16,6 +16,7 @@ urlpatterns = [
     path('', views.Login.as_view(), name='login'),
     path('home', views.Home.as_view(), name="home"),
     path('logout/', views.logout_view, name='logout'),
+    path('set-theme/', views.set_theme, name='set_theme'),
     path('api/', include(router.urls)),
 ]
 

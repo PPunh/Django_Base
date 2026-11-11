@@ -1,0 +1,21 @@
+<div class="w3-bar-item" style="padding: 0 6px;">
+    <div style="display: flex; align-items: center; gap: 6px;">
+        <i class="fa fa-paint-brush w3-text-theme" title="Theme"></i>
+        <select onchange="window.location.href='{% url 'users:set_theme' %}?theme=' + encodeURIComponent(this.value);"
+            class="w3-select w3-border w3-border-theme w3-round w3-small"
+            style="padding: 4px 8px; height: 36px; width: auto; cursor: pointer; font-size: 0.85rem;"
+            aria-label="Theme Selector">
+            {% for file, name in available_themes %}
+            <option value="{{ file }}" {% if theme_color == file %}selected{% endif %}>
+                {% if file == 'w3-theme-dark.css' %}
+                    🌙
+                {% elif file == 'w3-theme-black.css' %}
+                    ⬛
+                {% else %}
+                    🎨
+                {% endif %} | {{ name|title }}
+            </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>

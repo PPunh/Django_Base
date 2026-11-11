@@ -1,8 +1,53 @@
 {% extends "base-admin.html" %}
 {% load static %}
 {% load widget_tweaks %}
+
+{% block navigation_left %}
+    {% if user.is_authenticated %}
+        {% include 'partial/nav/side-nav/side-nav-admin.html' %}
+    {% endif %}
+{% endblock %}
+
 {% block main-content %}
-<div class="w3-container w3-row">
-    <h1>Home</h1>
+<div class="w3-container w3-margin-top">
+    <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+        <h2 class="w3-text-theme"><strong>Dashboard Overview</strong></h2>
+        <p class="w3-text-grey">
+            Active Theme: <span class="w3-tag w3-theme w3-round">{{ theme_color }}</span>
+        </p>
+    </div>
+
+    <!-- Theme Demo Cards -->
+    <div class="w3-row-padding" style="margin: 0 -16px;">
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-round-large w3-theme w3-padding-large">
+                <h4><i class="fa fa-paint-brush w3-margin-right"></i>Primary Theme</h4>
+                <p>Styled with <code>.w3-theme</code></p>
+                <button class="w3-button w3-white w3-text-theme w3-round w3-small" style="font-weight: bold;">
+                    Action Button
+                </button>
+            </div>
+        </div>
+
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-round-large w3-theme-l4 w3-padding-large w3-border w3-border-theme">
+                <h4 class="w3-text-theme"><i class="fa fa-sun-o w3-margin-right"></i>Light Variant</h4>
+                <p class="w3-text-grey">Styled with <code>.w3-theme-l4</code> and <code>.w3-border-theme</code></p>
+                <button class="w3-button w3-theme w3-hover-theme w3-round w3-small">
+                    Theme Button
+                </button>
+            </div>
+        </div>
+
+        <div class="w3-third w3-margin-bottom">
+            <div class="w3-card w3-round-large w3-theme-d3 w3-padding-large">
+                <h4><i class="fa fa-moon-o w3-margin-right"></i>Dark Variant</h4>
+                <p>Styled with <code>.w3-theme-d3</code></p>
+                <button class="w3-button w3-theme-l1 w3-round w3-small">
+                    Dark Shade Action
+                </button>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}

@@ -1,22 +1,18 @@
-from django.http import HttpResponse
-from django.views.generic.edit import FormView, CreateView, UpdateView
-from django.views.generic import ListView, TemplateView
 import logging
-from django.shortcuts import render, redirect
-from django.contrib.auth import logout
-from django.contrib.auth.views import LoginView
-from django.contrib.auth.forms import AuthenticationForm
-from django.db.models import Q
-from django.db import transaction
-from django.contrib import messages
-from django.urls import reverse_lazy
-from django.utils.decorators import method_decorator
-from django.views.decorators.http import require_http_methods
-from django.views.decorators.cache import never_cache
-from django_ratelimit.decorators import ratelimit
+
 from django.conf import settings
-from django.utils import timezone
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib import messages
+from django.contrib.auth import logout
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.views import LoginView
+from django.http import HttpResponse
+from django.shortcuts import redirect, render
+from django.urls import reverse_lazy
+from django.views.decorators.cache import never_cache
+from django.views.decorators.http import require_http_methods
+from django.views.generic import TemplateView
+from django.views.generic.edit import FormView
+from django_ratelimit.decorators import ratelimit
 
 from . import forms
 from . import models
@@ -44,7 +40,6 @@ class Login(LoginView):
         # Get the default context provided by LoginView
         context = super().get_context_data(**kwargs)
         context['title'] = 'Login'  # Add custom context
-        context['theme_color'] = 'w3-theme-blue.css'
         return context
 
     # redirect to page when login successful
@@ -60,7 +55,7 @@ class Login(LoginView):
         messages.error(self.request, 'Username / Email / Phone number / Password is required')
         return super().form_invalid(form)  # Re-render the form with errors message
 
-class Home(LoginRequiredMixin, TemplateView):
+class Home(TemplateView):
     template_name = "users/home.html"
 
     def get_context_data(self, **kwargs):
@@ -76,6 +71,33 @@ def logout_view(request):
     logout(request)
     messages.success(request, 'You have successfully logged out')
     return redirect('users:login')
+
+
+@require_http_methods(["GET", "POST"])
+def set_theme(request):
+    """
+    Switch theme preference.
+    Can be called via GET query ?theme=w3-theme-red.css or POST.
+    Updates the session, and if user is logged in, saves to Profile.
+    """
+    theme = request.GET.get('theme') or request.POST.get('theme')
+    valid_themes = [choice[0] for choice in models.Profile.COLOR_CHOICES]
+
+    if theme and theme in valid_themes:
+        request.session['theme_color'] = theme
+        if request.user.is_authenticated:
+            try:
+                profile, _ = models.Profile.objects.get_or_create(user=request.user)
+                profile.theme_color = theme
+                profile.save(update_fields=['theme_color'])
+            except Exception as e:
+                logging.getLogger(__name__).warning("Failed to save theme to profile: %s", e)
+
+    referer = request.META.get('HTTP_REFERER')
+    if referer:
+        return redirect(referer)
+    return redirect('users:home' if request.user.is_authenticated else 'users:login')
+
 
 
 class SuperUserCreation(FormView):

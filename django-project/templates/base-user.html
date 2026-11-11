@@ -18,13 +18,12 @@
         {% comment %} a lightweight Google Material Design CSS libs {% endcomment %}
         <link href="{% static 'css/w3/w3.css' %}" rel="stylesheet">
         {% if theme_color %}
-            <link href="{% static 'css/w3/'|add:theme_color %}" rel="stylesheet">
+            <link id="w3-theme-css" href="{% static 'css/w3/'|add:theme_color %}" rel="stylesheet">
         {% else %}
-            <link href="{% static 'css/w3/w3-theme-blue.css' %}" rel="stylesheet">
+            <link id="w3-theme-css" href="{% static 'css/w3/w3-theme-blue.css' %}" rel="stylesheet">
         {% endif %}
 
         {% comment %} your own Custom CSS {% endcomment %}
-        <link rel="stylesheet" href="{% static 'css/users.css' %}">
         <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 
         {% block css %}{% endblock %}
@@ -41,7 +40,7 @@
         {% comment %} Top Navigation {% endcomment %}
         {% block navigation_top %}
             {% if user.is_authenticated %}
-                {% include 'user-nav.html' %}
+                {% include 'partial/nav/nav-user.html' %}
             {% endif %}
         {% endblock %}
 

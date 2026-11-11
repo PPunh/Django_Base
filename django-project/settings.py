@@ -136,6 +136,7 @@ LOGOUT_URL = reverse_lazy('users:login')
 LOGIN_EXEMPT_URL_NAMES = [
     "users:login",
     "users:logout",
+    "users:set_theme",
     # "users:register",
     # "users:password_reset",
     # "product:sale",
@@ -157,6 +158,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'apps.users.context_processors.theme_context',
             ],
         },
     },

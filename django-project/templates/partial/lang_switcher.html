@@ -1,0 +1,7 @@
+<div class="w3-bar-item" style="padding: 0 10px;">
+    <select onchange="window.location.href=this.value" class="lang-select tvs-input w3-border w3-round w3-padding-small w3-text-grey"
+    style="padding: 6px 12px; height: 38px; width: auto; font-size: 0.85rem;">
+        <option value="{% change_lang 'en' %}" {% if LANGUAGE_CODE == 'en' %}selected{% endif %}>🇬🇧 EN</option>
+        <option value="{% change_lang 'lo' %}" {% if LANGUAGE_CODE == 'lo' %}selected{% endif %}>🇱🇦 ລາວ</option>
+    </select>
+</div>
