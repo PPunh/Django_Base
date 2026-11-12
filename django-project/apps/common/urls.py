@@ -9,11 +9,12 @@ from rest_framework.routers import DefaultRouter
 from . import views
 
 # Namespace for URLs in this users app
-app_name = 'commin'
+app_name = 'common'
 router = DefaultRouter()
 # router.register('', views.ViewSet)
 
 urlpatterns = [
+    path('ajax/load-districts/', views.load_districts, name='ajax_load_districts'),
     path('api/', include(router.urls)),
 ]
 

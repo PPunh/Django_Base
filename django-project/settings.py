@@ -135,13 +135,11 @@ LOGOUT_URL = reverse_lazy('users:login')
 # Pages that do NOT require login, used by middleware.BaseLoginRequiredMiddleware
 # format: "<app_name>:<url_name>"  (the login page itself is always allowed)
 LOGIN_EXEMPT_URL_NAMES = [
+    "users:create_super",
     "users:login",
     "users:logout",
     "users:set_theme",
     "set_language",
-    # "users:register",
-    # "users:password_reset",
-    # "product:sale",
 ]
 
 # Exempt a whole namespace (every url inside that app_name)

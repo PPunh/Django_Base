@@ -9,39 +9,57 @@ from django.conf import settings
 from apps.users.middleware import get_current_user
 
 class Province(models.Model):
-    PROVINCE_CHOICE = [
-        ('Phongsaly', _('Phongsaly')),
-        ('Luangnamtha', _('Luangnamtha')),
-        ('Borkeo', _('Borkeo')),
-        ('Oudomxay', _('Oudomxay')),
-        ('Xayaburi', _('Xayaburi')),
-        ('Luangprabang', _('Luangprabang')),
-        ('Houaphan', _('Houaphan')),
-        ('Xiangkhouang', _('Xiangkhouang')),
-        ('Vientiane Province', _('Vientiane Province')),
-        ('Vientiane Capital', _('Vientiane Capital')),
-        ('Xaisomboun', _('Xaisomboun')),
-        ('Borlikhamxai', _('Borlikhamxai')),
-        ('Khammouan', _('Khammouan')),
-        ('Salavan',_('Salavan')),
-        ('Champasak', _('Champasak')),
-        ('Attapeu', _('Attapeu')),
-    ]
     name = models.CharField(
-        max_length=50,
-        choices=PROVINCE_CHOICE,
-        verbose_name=_("Province"))
-
-    class Meta:
-        verbose_name = _('Province')
-        verbose_name_plural = _('Provinces')
-        ordering = ['id']
+        max_length = 100,
+        unique = True,
+        verbose_name = _("Province")
+    )
 
     def __str__(self):
-        return str(self.get_name_display())
+        return self.name
+
+class District(models.Model):
+    province = models.ForeignKey(
+        Province,
+        on_delete = models.CASCADE,
+        related_name = "district",
+        verbose_name = "Province"
+    )
+    name = models.CharField(
+        max_length = 100,
+        verbose_name = "District"
+    )
+
+    def __str__(self):
+        return self.name
 
 
-class PersonalInfoModel(models.Model):
+class Address(models.Model):
+    province = models.ForeignKey(
+        Province,
+        on_delete = models.SET_NULL,
+        null = True
+    )
+    district = models.ForeignKey(
+        District,
+        on_delete = models.SET_NULL,
+        null = True
+    )
+    village = models.CharField(
+        max_length = 100,
+        verbose_name = _("Village")
+    )
+
+    class Meta:
+        abstract = True
+
+    @property
+    def full_address(self):
+        return f"{self.village}, {self.district}, {self.province}"
+
+
+
+class PersonalInfoModel(Address):
     """
     Base personal infomation for other apps
     """
@@ -56,13 +74,6 @@ class PersonalInfoModel(models.Model):
         validators=[phone_regex],
         verbose_name=_("Phone Number")
     )
-    address = models.CharField(max_length=200, verbose_name=_("Address"))
-    province = models.ForeignKey(
-        Province,
-        on_delete=models.SET_NULL,
-        verbose_name=_("Province"),
-        blank=True, null=True
-    )
 
     class Meta:
         verbose_name = _("Personal Information")
@@ -70,6 +81,8 @@ class PersonalInfoModel(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.surname}"
+
+
 
 
 class PictureModel(models.Model):
