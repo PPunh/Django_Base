@@ -1,0 +1,32 @@
+{% load i18n %}
+{% if request.user.is_authenticated %}
+    <div class="w3-border-top w3-theme-d4" style="padding: 12px 14px;">
+        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px;">
+
+            <a href="#" style="display: flex; align-items: center; gap: 10px; text-decoration: none; flex: 1; min-width: 0; color: inherit;">
+                <div class="w3-circle w3-white w3-text-theme"
+                     style="width: 38px; height: 38px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-weight: bold; font-size: 1.1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2);">
+                    {{ request.user.username|slice:":1"|upper }}
+                </div>
+
+                <div style="flex: 1; min-width: 0;">
+                    <div style="font-size: 1rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                        {{ request.user.get_full_name|default:request.user.username }}
+                    </div>
+                    <div style="font-size: 0.75rem; opacity: 0.85; display: flex; align-items: center; gap: 5px;">
+                        <span class="w3-circle w3-green" style="width: 7px; height: 7px; display: inline-block;"></span>
+                        {% trans "Online" %}
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'users:logout' %}"
+               class="w3-button w3-round-large w3-hover-red"
+               style="padding: 8px 10px; flex-shrink: 0; background-color: rgba(255,255,255,0.12);"
+               title="{% trans 'Logout' %}">
+                <i class="fa fa-sign-out" style="font-size: 1.1rem;"></i>
+            </a>
+
+        </div>
+    </div>
+{% endif %}

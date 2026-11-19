@@ -15,11 +15,20 @@ class ProfileInline(admin.StackedInline):  # Or admin.TabularInline for a more c
     model = models.Profile
     can_delete = False  # Prevent deleting the profile directly from the user admin
 
+class PersonalInfoInline(admin.StackedInline):
+    model = models.PersonalInfo
+    fk_name = "user"
+    can_delete = False
+    extra = 0
+
 
 @admin.register(models.User)
 class UserAdmin(admin.ModelAdmin):
     model = models.User
-    inlines = (ProfileInline,)
+    inlines = (
+        ProfileInline,
+        PersonalInfoInline,
+    )
 
     def display_modified(self, obj): # display modified in local time
         return timezone.localtime(obj.date_modified).strftime('%Y-%m-%d %H:%M')

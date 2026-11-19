@@ -7,6 +7,10 @@ from django.core.validators import RegexValidator
 from django.contrib.auth.hashers import make_password, is_password_usable
 from django.contrib.auth.models import AbstractUser
 from django.utils.translation import gettext_lazy as _
+from apps.common.models import (
+    PersonalInfoModel,
+    AuditTableModel
+)
 
 
 class User(AbstractUser):
@@ -131,3 +135,20 @@ class Profile(models.Model):
 
     def user_email(self):
         return self.user.email
+
+
+
+class PersonalInfo(PersonalInfoModel, AuditTableModel):
+    user = models.OneToOneField(
+        User,
+        on_delete = models.CASCADE,
+        verbose_name = _("User"),
+        related_name = "%(class)s_user"
+    )
+
+    class Meta:
+        verbose_name = "Admin Personal Info"
+        verbose_name_plural = "Admin Personal Info"
+
+    def __str__(self):
+        return f"{self.user.username} - {self.name} - {self.phone_number}"

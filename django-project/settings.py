@@ -293,7 +293,7 @@ STATICFILES_DIRS = [
 
     # app specific static directory
     # each new app need to register its static dir here
-    os.path.join(BASE_DIR, 'apps', 'users', 'templates', 'static'),
+    # os.path.join(BASE_DIR, 'apps', 'users', 'templates', 'static'),
 ]
 
 # base URL for media files uploaded by users

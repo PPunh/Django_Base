@@ -1,25 +1,35 @@
-<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left"
+{% load i18n %}
+<div class="w3-sidebar w3-bar-block w3-collapse w3-card w3-animate-left w3-theme-d4"
     style="width:15%; z-index: 3;" id="mySidebar">
-    <div class="w3-container w3-theme w3-align-left w3-card">
-        <h4>
-            <i class="fa fa-paint-brush w3-border w3-border-with w3-round-large w3-margin-right"></i>
-            <strong>
-                Personalization
-            </strong>
-        </h4>
-    </div>
-    <div class="w3-container w3-padding w3-margin-top">
-        <a href="#" class="w3-bar-item w3-button w3-round-large">
-            <i class="fa fa-user w3-margin-right"></i>
-           User Profile
-        </a>
-        <a href="#" class="w3-bar-item w3-button w3-round-large">
-            <i class="fa fa-cog w3-margin-right"></i>
-           Account Settings
-        </a>
-        <a href="#" class="w3-bar-item w3-button w3-round-large">
-            <i class="fa fa-bell w3-margin-right"></i>
-            Notifications
-        </a>
+
+    <div style="display: flex; flex-direction: column; height: calc(100vh - 60px);">
+        <div class="w3-container w3-padding w3-margin-top" style="flex: 1; overflow-y: auto;">
+            <div class="w3-center">
+                <i class="fa fa-snowflake fa-solid w3-spin w3-large"></i>
+                <h5>Personalization</h5> <hr>
+            </div>
+            <a href="#" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
+                <i class="fa fa-user w3-margin-right"></i>
+                {% trans "User Profile" %}
+            </a>
+            <a href="#" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
+                <i class="fa fa-cog w3-margin-right"></i>
+                {% trans "Account Settings" %}
+            </a>
+            <a href="#" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
+                <i class="fa fa-bell w3-margin-right"></i>
+                {% trans "Notifications" %}
+            </a>
+            {% if user.is_superuser %}
+            <a href="{% url 'admin:index' %}"
+                class="w3-bar-item w3-button w3-round-large w3-hover-theme"
+                target="_blank">
+                <i class="fa fa-space-shuttle w3-margin-right"></i>
+                {% trans "Root" %}
+            </a>
+            {% endif %}
+        </div>
+
+        {% include 'partial/nav/side-nav/footer-nav.html' %}
     </div>
 </div>

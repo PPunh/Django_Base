@@ -1,6 +1,6 @@
 # coding=utf-8
 from django import forms
-from apps.common.models import District, PersonalInfoModel
+from apps.common.models import District
 
 class ChainedAddressFormMixin:
     province_field = 'province'
@@ -28,7 +28,18 @@ class ChainedAddressFormMixin:
                     ).order_by('name')
 
 
-class PersonalInfoAdminForm(ChainedAddressFormMixin, forms.ModelForm):
-    class Meta:
-        model = PersonalInfoModel
-        fields = '__all__'
+# class PersonalInfoAdminForm(ChainedAddressFormMixin, forms.ModelForm):
+#     class Meta:
+#         model = PersonalInfoModel
+#         fields = '__all__'
+#
+#     def __init__(self, *args, **kwargs):
+#         super().__init__(*args, **kwargs)
+#
+#         for field in self.fields.values():
+#             field.widget.attrs.update(
+#                 {
+#                     'class':'w3-input w3-round-large',
+#                     'placeholder':field.label or ''
+#                 }
+#             )

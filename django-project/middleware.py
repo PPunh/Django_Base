@@ -24,13 +24,6 @@ class CustomRateLimitMeaage:
 
 
 class BaseLoginRequiredMiddleware:
-    """
-    บังคับให้ทุกหน้าต้อง login ยกเว้น
-      1. view ที่ติด @login_exempt
-      2. url name ใน settings.LOGIN_EXEMPT_URL_NAMES   (เช่น "users:login")
-      3. namespace ใน settings.LOGIN_EXEMPT_NAMESPACES (เช่น "api_public")
-      4. หน้า LOGIN_URL เอง (กัน redirect loop)
-    """
 
     def __init__(self, get_response):
         self.get_response = get_response
@@ -47,10 +40,8 @@ class BaseLoginRequiredMiddleware:
         if getattr(view_func, "login_exempt", False):
             return None
 
-        # แปลง LOGIN_URL (ชื่อ url / path / reverse_lazy) ให้เป็น path string
         login_path = str(resolve_url(settings.LOGIN_URL))
 
-        # กัน loop: อยู่ที่หน้า login แล้วไม่ต้อง redirect
         if request.path == login_path:
             return None
 
