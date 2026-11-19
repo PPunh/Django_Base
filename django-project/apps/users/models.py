@@ -19,7 +19,10 @@ class User(AbstractUser):
     class Meta:
         verbose_name = _('User')
         verbose_name_plural = _('Users')
-
+    # Remove fields first_name nad last_name
+    # Using these fields on Personal Model
+    first_name = None
+    last_name = None
     # regular expression: all number, total 8 digits, use for validate phone number input
     phone_regex = RegexValidator(
         regex=r"^\d{8}$",  # Exactly 8 digits
@@ -139,6 +142,11 @@ class Profile(models.Model):
 
 
 class PersonalInfo(PersonalInfoModel, AuditTableModel):
+    avatar = models.ImageField(
+        upload_to = "photo/avatar/",
+        blank=True, null=True,
+        verbose_name = _("Avatar")
+    )
     user = models.OneToOneField(
         User,
         on_delete = models.CASCADE,

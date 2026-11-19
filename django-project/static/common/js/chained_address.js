@@ -1,8 +1,8 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const provinceSelects = document.querySelectorAll('select[id$="_province"]');
+function initChainedAddress(scope = document) {
+    const provinceSelects = scope.querySelectorAll('select[id$="_province"], select[id$="-province"]');
 
     provinceSelects.forEach(function (provinceSelect) {
-        const districtId = provinceSelect.id.replace(/_province$/, "_district");
+        const districtId = provinceSelect.id.replace(/([_-])province$/, "$1district");
         const districtSelect = document.getElementById(districtId);
 
         if (!districtSelect) return;
@@ -32,6 +32,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (provinceSelect.value) {
             updateDistricts(provinceSelect.value, districtSelect.value);
+        } else {
+            districtSelect.innerHTML = '<option value="">---------</option>';
         }
     });
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    initChainedAddress(document);
+
+    document.addEventListener("formset:added", function (event) {
+        initChainedAddress(event.target);
+    });
 });
+
