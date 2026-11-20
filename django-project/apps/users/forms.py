@@ -7,7 +7,9 @@ from django.core.exceptions import ValidationError
 from .backends import MultiAuthBackend
 from django.utils import timezone
 from . import models
-from .models import User
+from apps.common.mixins import ChainedAddressFormMixin
+from apps.common.mixins import ChainedAddressFormMixin
+from .models import User, Profile, PersonalInfo, Profile, PersonalInfo
 
 class LoginForm(AuthenticationForm):
     username = forms.CharField(
@@ -92,6 +94,61 @@ class CustomUserForm(UserCreationForm):
         for field in self.fields.values():
             field.widget.attrs['class']= f"{field.widget.attrs.get('class', '')} {css_class}".strip()
             field.help_text = None
+
+
+class UserUpdateForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ("username", "email", "phone_number", "is_active", "is_user", "is_admin", "is_superuser",)
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        if self.instance and self.instance.pk and 'username' in self.fields:
+            self.fields['username'].disabled = True
+
+        for field in self.fields.values():
+            field.widget.attrs.update(
+                {
+                    'class': 'w3-input w3-round-large',
+                    'placeholder': field.label or ''
+                }
+            )
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("theme_color", "language")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            field.widget.attrs.update(
+                {
+                    'class':'w3-input w3-round-large',
+                    'placeholder':field.label or ''
+                }
+            )
+
+
+class PersonalInfoForm(ChainedAddressFormMixin, forms.ModelForm):
+    class Meta:
+        model = PersonalInfo
+        exclude = ("user", "created_at", "created_by", "modified_at", "modified_by")
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+
+        for field in self.fields.values():
+            field.widget.attrs.update(
+                {
+                    'class':'w3-input w3-round-large',
+                    'placeholder':field.label or ''
+                }
+            )
+
 
 
 class SuperUserCreationForm(forms.ModelForm):

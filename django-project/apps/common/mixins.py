@@ -28,7 +28,7 @@ class MultipleInlineFormsetMixin:
     """
     inline_formsets = []
     priority_fields = ('user',)                       # FK names preferred when ambiguous
-    audit_fields = ('created_by', 'updated_by', 'deleted_by')
+    audit_fields = ('created_by', 'updated_by', 'deleted_by', 'modified_by')
 
     def get_model_class(self, model_config):
         """Convert 'app.Model' string to a model class."""
@@ -304,10 +304,11 @@ class ChainedAddressFormMixin:
         if self.province_field in self.fields and self.district_field in self.fields:
             self.fields[self.district_field].queryset = District.objects.none()
 
-            # 1. if form.submit
-            if self.province_field in self.data:
+            # 1. if form.submit (support both standard forms and inline formsets with prefix)
+            province_data_key = self.add_prefix(self.province_field)
+            if province_data_key in self.data:
                 try:
-                    province_id = int(self.data.get(self.province_field))
+                    province_id = int(self.data.get(province_data_key))
                     self.fields[self.district_field].queryset = District.objects.filter(
                         province_id=province_id
                     ).order_by('name')

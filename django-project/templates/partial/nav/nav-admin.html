@@ -21,9 +21,14 @@
             {% trans "Home" %}
         </a>
 
-        <a href="#" class="w3-button w3-round-large w3-theme-d4 w3-hover-theme">
+        <a href="{% url 'admins:profile_home' %}" class="w3-button w3-round-large w3-theme-d4 w3-hover-theme">
             <i class="fa fa-user fa-solid w3-margin-right"></i>
-            {% trans "Users" %}
+            {% trans "Profile" %}
+        </a>
+
+        <a href="#" class="w3-button w3-round-large w3-theme-d4 w3-hover-theme">
+            <i class="fa fa-user-shield fa-solid w3-margin-right"></i>
+            {% trans "Admin" %}
         </a>
 
         {% include 'partial/lang_switcher.html' %}

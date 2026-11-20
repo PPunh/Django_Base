@@ -7,13 +7,13 @@ LAOS_DATA = {
         "Naxaithong", "Xaythany", "Hadxayfong", "Sangthong", "Mayparkngum"
     ],
     "Phongsaly": [
-        "Phongsaly", "May", "Khoua", "Samphanh", "Boun Neua", "Yot Ou", "Boun Tay"
+        "Phongsaly", "May", "Khoua", "Samphanh", "Boun Neua", "Yot Ou", "Boun Tai"
     ],
     "Luangnamtha": [
         "Namtha", "Sing", "Long", "Viengphoukha", "Nalae"
     ],
     "Oudomxay": [
-        "Xay", "La", "Na Mo", "Nga", "Beng", "Houne", "Pakbeng"
+        "Xay", "La", "Na Mor", "Nga", "Beng", "Houn", "Pakbeng"
     ],
     "Borkeo": [
         "Houayxay", "Ton Pheung", "Meung", "Pha Oudom", "Paktha"

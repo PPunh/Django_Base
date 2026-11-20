@@ -12,9 +12,10 @@ class ChainedAddressFormMixin:
         if self.province_field in self.fields and self.district_field in self.fields:
             self.fields[self.district_field].queryset = District.objects.none()
 
-            if self.province_field in self.data:
+            province_data_key = self.add_prefix(self.province_field)
+            if province_data_key in self.data:
                 try:
-                    province_id = int(self.data.get(self.province_field))
+                    province_id = int(self.data.get(province_data_key))
                     self.fields[self.district_field].queryset = District.objects.filter(
                         province_id=province_id
                     ).order_by('name')

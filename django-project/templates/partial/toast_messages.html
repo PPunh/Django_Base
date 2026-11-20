@@ -1,21 +1,32 @@
 {% if messages %}
     {% for message in messages %}
         <div id="toast-message-{{ forloop.counter }}"
-             class="w3-animate-right w3-padding w3-card-4 w3-round"
+             class="w3-animate-right w3-padding w3-card-4 w3-round-large
+                    {% if 'error' in message.tags %}w3-red
+                    {% elif 'warning' in message.tags %}w3-amber
+                    {% else %}w3-theme{% endif %}"
              style="position: fixed;
                     bottom: calc(20px + {{ forloop.counter0 }} * 70px);
                     right: 20px;
                     z-index: 9999;
                     width: 400px;
-                    background-color: {% if message.tags == 'error' %}#f44336
-                                     {% elif message.tags == 'success' %}#4CAF50
-                                     {% else %}#2196F3{% endif %};
-                    color: white;
+                    max-width: calc(100vw - 40px);
                     opacity: 1;
                     transition: bottom 0.3s ease-in-out, opacity 0.3s;">
-            <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>{{ message }}</span>
-                <button class="close-message w3-button w3-hover-none w3-hover-text-red" style="background: none; border: none;">
+            <div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;">
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    {% if 'error' in message.tags %}
+                        <i class="fa-solid fa-circle-exclamation w3-large"></i>
+                    {% elif 'warning' in message.tags %}
+                        <i class="fa-solid fa-triangle-exclamation w3-large"></i>
+                    {% elif 'success' in message.tags %}
+                        <i class="fa-solid fa-circle-check w3-large"></i>
+                    {% else %}
+                        <i class="fa-solid fa-circle-info w3-large"></i>
+                    {% endif %}
+                    <span>{{ message }}</span>
+                </div>
+                <button type="button" class="close-message w3-button w3-hover-none w3-padding-small" style="background: none; border: none;">
                     <i class="fa fa-close"></i>
                 </button>
             </div>
@@ -23,24 +34,18 @@
     {% endfor %}
 
     <script>
-        // Auto-hide with fade-out after 4 seconds
         setTimeout(function() {
             document.querySelectorAll("[id^='toast-message']").forEach(function(toast) {
                 toast.style.opacity = "0";
-                setTimeout(() => {
-                    toast.style.display = "none";
-                }, 300); // wait for fade out before hiding
+                setTimeout(() => { toast.style.display = "none"; }, 300);
             });
         }, 6000);
 
-        // Manual close with fade-out
         document.querySelectorAll(".close-message").forEach(function(button) {
             button.addEventListener("click", function() {
                 const toast = this.closest("div[id^='toast-message']");
                 toast.style.opacity = "0";
-                setTimeout(() => {
-                    toast.style.display = "none";
-                }, 300);
+                setTimeout(() => { toast.style.display = "none"; }, 300);
             });
         });
     </script>

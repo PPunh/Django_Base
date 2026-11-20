@@ -11,7 +11,7 @@
 
                 <div style="flex: 1; min-width: 0;">
                     <div style="font-size: 1rem; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
-                        {{ request.user.get_full_name|default:request.user.username }}
+                        {{ request.user.personal_info.name | default:"" }} {{request.user.personal_info.surname | default:""}}
                     </div>
                     <div style="font-size: 0.75rem; opacity: 0.85; display: flex; align-items: center; gap: 5px;">
                         <span class="w3-circle w3-green" style="width: 7px; height: 7px; display: inline-block;"></span>

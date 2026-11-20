@@ -1,68 +1,90 @@
 {% load widget_tweaks %}
 
-<div class="w3-row-padding" style="display: flex; flex-wrap: wrap; margin: 0 -12px;">
+<div class="w3-padding w3-border w3-round-large w3-light-grey">
+
     {% if form.non_field_errors %}
-        <div class="w3-col l12 m12 s12 w3-margin-bottom">
-            <div class="w3-card-4 w3-padding-16 w3-container">
-                <i class="fa-solid fa-circle-exclamation w3-large" style="color: #ef4444;"></i>
-                <div style="font-weight: 600;">
-                    <div style="font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 2px; color: #dc2626;">Error!</div>
-                    <div style="font-size: 0.85rem; opacity: 0.9; color: #991b1b;">{{ form.non_field_errors }}</div>
-                </div>
+        <div class="w3-panel w3-pale-red w3-leftbar w3-border-red w3-round w3-padding w3-margin-bottom">
+            <div class="w3-text-red">
+                <strong><i class="fa-solid fa-circle-exclamation w3-margin-right"></i>Error!</strong>
             </div>
+            <div class="w3-small w3-text-red">{{ form.non_field_errors }}</div>
         </div>
     {% endif %}
 
-    {% for field in form.visible_fields %}
-        <div class="w3-col {% if field.name == 'customer_info' or field.name == 'address' or field.name == 'description' %}l12 m12 s12{% else %}l4 m6 s12{% endif %} w3-margin-bottom" style="padding: 0 12px;">
-            <div class="field-container" style="transition: transform 0.2s;">
-                {% if field|widget_type != 'hiddeninput' %}
-                    <label class="w3-text-grey">
-                        {{ field.label }}
-                        {% if field.field.required %}<span style="color: #ef4444; margin-left: 2px;">*</span>{% endif %}
-                    </label>
-                {% endif %}
+    <div class="w3-row-padding" style="margin: 0 -8px;">
+        {% for field in form.visible_fields %}
+            {% if field|widget_type != 'checkboxinput' %}
+                <div class="w3-col {% if field.name == 'customer_info' or field.name == 'address' or field.name == 'description' %}l12 m12 s12{% else %}l3 m6 s12{% endif %} w3-margin-bottom" style="padding: 0 8px;">
 
-                <div class="input-wrapper" style="position: relative;">
-                    {% if field|widget_type == 'checkboxinput' %}
-                        <div style="padding: 10px 0;">
-                            <label style="display: flex; align-items: center; gap: 10px; cursor: pointer;">
-                                {{ field|add_class:'w3-check' }}
-                                <span style="font-weight: 600; color: #1e293b;">{{ field.label }}</span>
-                            </label>
-                        </div>
-                    {% elif field|widget_type == 'select' %}
+                    {% if field|widget_type != 'hiddeninput' %}
+                        <label class="w3-small w3-text-dark-grey" style="display: block; margin-bottom: 6px;">
+                            <strong>
+                                {{ field.label }}
+                                {% if field.field.required %}
+                                    <span class="w3-text-red">*</span>
+                                {% endif %}
+                            </strong>
+                        </label>
+                    {% endif %}
+
+                    {% if field|widget_type == 'select' %}
                         {% if 'select2-hidden-accessible' in field.field_class or 'django-select2' in field.field_class %}
                             {{ field }}
                         {% else %}
-                            {{ field|add_class:'w3-select ' }}
+                            {{ field|add_class:'w3-select w3-white w3-border w3-round' }}
                         {% endif %}
                     {% elif field|widget_type == 'textarea' %}
-                        {{ field|add_class:'w3-input '|attr:'rows:3'|attr:'style:resize:vertical; border: 2px solid #e2e8f0;' }}
+                        {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'rows:2' }}
+                    {% elif field|widget_type == 'clearablefileinput' %}
+                        {{ field|add_class:'w3-input w3-white w3-border w3-round' }}
                     {% elif field|widget_type == 'dateinput' %}
-                        {{ field|add_class:'w3-input '|attr:'type:date'|attr:'style:border: 2px solid #e2e8f0;' }}
+                        {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'type:date' }}
                     {% elif field|widget_type == 'datetimeinput' %}
-                        {{ field|add_class:'w3-input '|attr:'type:datetime-local'|attr:'style:border: 2px solid #e2e8f0;' }}
+                        {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'type:datetime-local' }}
+                    {% elif field|widget_type == 'selectdatewidget' %}
+                        {{ field|add_class:'w3-select w3-white w3-border w3-round' }}
                     {% else %}
-                        {{ field|add_class:'w3-input '|attr:'style:border: 2px solid #e2e8f0;' }}
+                        {{ field|add_class:'w3-input w3-white w3-border w3-round' }}
                     {% endif %}
 
                     {% if field.errors %}
-                        <div style="margin-top: 6px; display: flex; align-items: center; gap: 6px; color: #ef4444;">
-                            <i class="fa-solid fa-circle-exclamation" style="font-size: 0.75rem;"></i>
-                            <div style="font-size: 0.75rem; font-weight: 700;">{{ field.errors|striptags }}</div>
+                        <div class="w3-text-red w3-small w3-margin-top">
+                            {% for error in field.errors %}
+                                <div><strong><i class="fa fa-exclamation-circle w3-margin-right"></i>{{ error }}</strong></div>
+                            {% endfor %}
                         </div>
                     {% endif %}
+
+                    {% if field.help_text %}
+                        <p class="w3-tiny w3-text-grey" style="margin: 4px 0 0 0;">{{ field.help_text|safe }}</p>
+                    {% endif %}
+
                 </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 
-                {% if field.help_text %}
-                    <p style="margin: 4px 0 0 0; font-size: 0.75rem; color: #94a3b8; line-height: 1.4;">{{ field.help_text|safe }}</p>
-                {% endif %}
-            </div>
-        </div>
+    <div class="w3-row-padding w3-padding-top" style="margin: 8px -8px 0 -8px;">
+        {% for field in form.visible_fields %}
+            {% if field|widget_type == 'checkboxinput' %}
+                <div class="w3-col l3 m6 s12 w3-margin-bottom" style="padding: 0 8px;">
+                    <div class="w3-white w3-border w3-round w3-padding-small">
+                        <label class="w3-small w3-text-dark-grey" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                            {{ field|add_class:'w3-check'|attr:'style:top: 0; flex-shrink: 0;' }}
+                            <strong>{{ field.label }}</strong>
+                        </label>
+                        {% if field.help_text %}
+                            <p class="w3-tiny w3-text-grey" style="margin: 4px 0 0 32px;">{{ field.help_text|safe }}</p>
+                        {% endif %}
+                        {% if field.errors %}
+                            <div class="w3-text-red w3-small w3-margin-top">
+                                <strong><i class="fa fa-exclamation-circle w3-margin-right"></i>{{ field.errors|striptags }}</strong>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
 
-        {% if field.name == 'customer_info' %}
-            <div style="flex-basis: 100%; height: 0;"></div>
-        {% endif %}
-    {% endfor %}
 </div>

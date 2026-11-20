@@ -4,70 +4,91 @@
     {{ formset.management_form }}
 
     {% for form in formset %}
-        <div class="formset-item w3-margin-bottom" data-form-index="{{ forloop.counter0 }}">
+        <div class="formset-item w3-margin-bottom w3-padding w3-border w3-round-large w3-light-grey" data-form-index="{{ forloop.counter0 }}">
             {{ form.id }}
 
-            <div class="">
-                <div class="w3-row-padding" style="display: flex; flex-wrap: wrap; gap: 12px; align-items: flex-end; margin: 0 -16px;">
+            {% for field in form.visible_fields %}
+                {% if field.name == 'DELETE' %}
+                    <div class="w3-bar w3-margin-bottom">
+                        <span class="w3-bar-item w3-padding-small w3-small w3-text-grey">
+                            <strong>#{{ forloop.parentloop.counter }}</strong>
+                        </span>
+                        <label class="formset-delete-container w3-bar-item w3-right w3-small w3-text-red w3-button w3-white w3-border w3-round w3-padding-small" style="cursor: pointer;">
+                            <i class="fa-solid fa-trash-can w3-margin-right"></i><strong>Delete</strong>
+                            <span style="display: none;">
+                                {{ field|add_class:'w3-check delete-checkbox' }}
+                            </span>
+                        </label>
+                    </div>
+                {% endif %}
+            {% endfor %}
 
-                    {% for field in form.visible_fields %}
-                        {% if field|widget_type != 'checkboxinput' %}
-                            <div style="flex: 1; min-width: 150px; padding: 0 8px;">
-                                {% if field|widget_type != 'hiddeninput' %}
-                                    <label class="w3-small w3-text-grey" style="display: block; margin-bottom: 6px; font-weight: 700; color: #1e293b;">
+            <div class="w3-row-padding" style="display: flex; flex-wrap: wrap; margin: 0 -8px;">
+                {% for field in form.visible_fields %}
+                    {% if field|widget_type != 'checkboxinput' and field.name != 'DELETE' %}
+                        <div class="w3-col {% if field.name == 'customer_info' or field.name == 'address' or field.name == 'description' %}l12 m12 s12{% else %}l3 m6 s12{% endif %} w3-margin-bottom" style="padding: 0 8px;">
+
+                            {% if field|widget_type != 'hiddeninput' %}
+                                <label class="w3-small w3-text-dark-grey" style="display: block; margin-bottom: 6px;">
+                                    <strong>
                                         {{ field.label }}
                                         {% if field.field.required %}
                                             <span class="w3-text-red">*</span>
                                         {% endif %}
-                                    </label>
-                                {% endif %}
-
-                                {% if field|widget_type == 'textinput' %}
-                                    {{ field|add_class:'w3-input'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% elif field|widget_type == 'textarea' %}
-                                    {{ field|add_class:'w3-input'|attr:'rows:2'|attr:'style:border: 2px solid #e2e8f0; resize: vertical;' }}
-                                {% elif field|widget_type == 'clearablefileinput' %}
-                                    {{ field|add_class:'w3-input'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% elif field|widget_type == 'dateinput' %}
-                                    {{ field|add_class:'w3-input'|attr:'type:date'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% elif field|widget_type == 'datetimeinput' %}
-                                    {{ field|add_class:'w3-input'|attr:'type:datetime-local'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% elif field|widget_type == 'selectdatewidget' %}
-                                    {{ field|add_class:'w3-select'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% elif field|widget_type == 'select' %}
-                                    {{ field|add_class:'w3-select'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% else %}
-                                    {{ field|add_class:'w3-input'|attr:'style:border: 2px solid #e2e8f0;' }}
-                                {% endif %}
-
-                                {% if field.errors %}
-                                    <div class="w3-text-red w3-small" style="margin-top: 4px; font-weight: 700;">
-                                        {% for error in field.errors %}
-                                            <div><i class="fa fa-exclamation-circle w3-margin-right"></i>{{ error }}</div>
-                                        {% endfor %}
-                                    </div>
-                                {% endif %}
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-
-                    <!-- Delete checkbox -->
-                    {% for field in form.visible_fields %}
-                        {% if field.name == 'DELETE' %}
-                            <div class="formset-delete-container" style="flex: 0 0 auto; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; padding: 0 8px;">
-                                <label class="w3-small w3-text-red" style="display: block; margin-bottom: 8px; font-weight: 700; text-align: center; cursor: pointer;">
-                                    <i class="fa-solid fa-trash-can"></i> Delete
+                                    </strong>
                                 </label>
+                            {% endif %}
 
-                                <div style="display: none;">
-                                    {{ field|add_class:'w3-check delete-checkbox' }}
+                            {% if field|widget_type == 'clearablefileinput' %}
+                                <div class="w3-white w3-border w3-round w3-padding-small w3-small">
+                                    {{ field }}
                                 </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
+                            {% elif field|widget_type == 'textarea' %}
+                                {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'rows:2' }}
+                            {% elif field|widget_type == 'dateinput' %}
+                                {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'type:date' }}
+                            {% elif field|widget_type == 'datetimeinput' %}
+                                {{ field|add_class:'w3-input w3-white w3-border w3-round'|attr:'type:datetime-local' }}
+                            {% elif field|widget_type == 'selectdatewidget' %}
+                                {{ field|add_class:'w3-select w3-white w3-border w3-round' }}
+                            {% elif field|widget_type == 'select' %}
+                                {{ field|add_class:'w3-select w3-white w3-border w3-round' }}
+                            {% else %}
+                                {{ field|add_class:'w3-input w3-white w3-border w3-round' }}
+                            {% endif %}
 
-                </div>
+                            {% if field.errors %}
+                                <div class="w3-text-red w3-small w3-margin-top">
+                                    {% for error in field.errors %}
+                                        <div><strong><i class="fa fa-exclamation-circle w3-margin-right"></i>{{ error }}</strong></div>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+
+                            {% if field.help_text %}
+                                <p class="w3-tiny w3-text-grey" style="margin: 4px 0 0 0;">{{ field.help_text|safe }}</p>
+                            {% endif %}
+
+                        </div>
+                    {% endif %}
+                {% endfor %}
             </div>
+
+            <div class="w3-row-padding" style="display: flex; flex-wrap: wrap; margin: 0 -8px;">
+                {% for field in form.visible_fields %}
+                    {% if field|widget_type == 'checkboxinput' and field.name != 'DELETE' %}
+                        <div class="w3-col l3 m6 s12 w3-margin-bottom" style="padding: 0 8px;">
+                            <div class="w3-white w3-border w3-round w3-padding-small">
+                                <label class="w3-small w3-text-dark-grey" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    {{ field|add_class:'w3-check'|attr:'style:top: 0; flex-shrink: 0;' }}
+                                    <strong>{{ field.label }}</strong>
+                                </label>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
         </div>
     {% endfor %}
 </div>

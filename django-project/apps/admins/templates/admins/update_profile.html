@@ -1,0 +1,92 @@
+{% extends "base-admin.html" %}
+{% load static %}
+{% load i18n %}
+
+{% block navigation_left %}
+    {% if user.is_authenticated %}
+        {% include 'partial/nav/side-nav/side-nav-apps_profile.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block main-content %}
+<div class="w3-container w3-margin-top">
+
+    <!-- Header -->
+    <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+        <div class="w3-row">
+            <div class="w3-col m8 s12">
+                <h2 class="w3-text-theme w3-margin-0">
+                    <strong>
+                        {% if object.pk %}
+                            <i class="fa fa-edit w3-margin-right"></i>{% trans "Update User Profile" %}
+                        {% else %}
+                            <i class="fa fa-user-plus w3-margin-right"></i>{% trans "Create New User" %}
+                        {% endif %}
+                    </strong>
+                </h2>
+                <p class="w3-text-grey w3-small w3-margin-bottom">
+                    {% if object.pk %}
+                        {% trans "Update account details, preferences, and personal address information" %}
+                    {% else %}
+                        {% trans "Fill in the details below to register a new user account" %}
+                    {% endif %}
+                </p>
+            </div>
+            <div class="w3-col m4 s12 w3-right-align w3-margin-top">
+                <a href="javascript:history.back()" class="w3-button w3-light-grey w3-border w3-round-large w3-small">
+                    <i class="fa fa-arrow-left w3-margin-right"></i>{% trans "Back" %}
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form & Formsets -->
+    <form method="post" enctype="multipart/form-data" novalidate>
+        {% csrf_token %}
+
+        <!-- 1. Main Form -->
+        <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+            <h5 class="w3-text-theme w3-border-bottom w3-padding-small">
+                <strong><i class="fa fa-id-card w3-margin-right"></i>{% trans "Account Information" %}</strong>
+            </h5>
+            {% include 'snippets/form_generic.html' with form=form %}
+        </div>
+
+        <!-- 2. Profile Formset -->
+        {% if user_profile_formset %}
+        <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+            <h5 class="w3-text-theme w3-border-bottom w3-padding-small">
+                <strong><i class="fa fa-sliders w3-margin-right"></i>{% trans "Profile & Preferences" %}</strong>
+            </h5>
+            {% include 'snippets/formset_generic.html' with formset=user_profile_formset %}
+        </div>
+        {% endif %}
+
+        <!-- 3. Personal Info & Address Formset -->
+        {% if user_personal_info_formset %}
+        <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+            <h5 class="w3-text-theme w3-border-bottom w3-padding-small">
+                <strong><i class="fa fa-map-marker w3-margin-right"></i>{% trans "Personal Information & Address" %}</strong>
+            </h5>
+            {% include 'snippets/formset_generic.html' with formset=user_personal_info_formset %}
+        </div>
+        {% endif %}
+
+        <!-- Action Buttons -->
+        <div class="w3-bar w3-padding-16">
+            <div class="w3-right">
+                <a href="javascript:history.back()" class="w3-button w3-light-grey w3-border w3-round-large w3-margin-right">
+                    <i class="fa fa-times w3-margin-right"></i>{% trans "Cancel" %}
+                </a>
+                <button type="submit" class="w3-button w3-theme w3-round-large">
+                    <i class="fa fa-save w3-margin-right"></i>
+                    {% if object.pk %}{% trans "Save Changes" %}{% else %}{% trans "Create User" %}{% endif %}
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<script src="{% static 'common/js/chained_address.js' %}"></script>
+{% endblock %}

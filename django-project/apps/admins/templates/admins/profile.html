@@ -1,0 +1,186 @@
+{% extends "base-admin.html" %}
+{% load static %}
+{% load widget_tweaks %}
+{% load i18n %}
+
+{% block navigation_left %}
+    {% if user.is_authenticated %}
+        {% include 'partial/nav/side-nav/side-nav-apps_profile.html' %}
+    {% endif %}
+{% endblock %}
+
+{% block main-content %}
+<div class="w3-container w3-margin-top">
+    <!-- <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+        <div class="w3-row">
+            <div class="w3-col m8 s12">
+                <h2 class="w3-text-theme w3-margin-0"><strong><i class="fa fa-user-circle w3-margin-right"></i> {% trans "User Profile" %}</strong></h2>
+                <p class="w3-text-grey w3-small w3-margin-top-small">
+                    {% trans "Manage your personal information and account preferences" %}
+                </p>
+            </div>
+            <div class="w3-col m4 s12 w3-right-align w3-margin-top">
+                <a href="#" class="w3-button w3-theme w3-round-large w3-small">
+                    <i class="fa fa-edit"></i> {% trans "Edit Profile" %}
+                </a>
+                <a href="#" class="w3-button w3-light-grey w3-border w3-round-large w3-small">
+                    <i class="fa fa-key"></i> {% trans "Password" %}
+                </a>
+            </div>
+        </div>
+    </div> -->
+
+    <div class="w3-row-padding" style="margin: 0 -16px;">
+
+        <div class="w3-col l4 m5 s12 w3-margin-bottom">
+            <div class="w3-card w3-round-large w3-white w3-padding-large w3-center">
+                <div class="w3-margin-top w3-margin-bottom">
+                    {% if user_obj.personal_info and user_obj.personal_info.avatar %}
+                        <img src="{{ user_obj.personal_info.avatar.url }}"
+                             alt="{{ user_obj.username }}"
+                             class="w3-circle w3-border w3-padding-small"
+                             style="width: 140px; height: 140px; object-fit: cover;">
+                    {% else %}
+                        <div class="w3-circle w3-theme-l4 w3-text-theme w3-display-container"
+                             style="width: 140px; height: 140px; margin: auto; font-size: 56px;">
+                            <span class="w3-display-middle">
+                                <strong>{{ user_obj.username|slice:":1"|upper }}</strong>
+                            </span>
+                        </div>
+                    {% endif %}
+                </div>
+
+                <h4 class="w3-margin-bottom-small">
+                    <strong>
+                        {% if user_obj.personal_info.name %}
+                            {{ user_obj.personal_info.name }} {{ user_obj.personal_info.surname|default:""|upper }}
+                        {% else %}
+                            {{ user_obj.username }}
+                        {% endif %}
+                    </strong>
+                </h4>
+                <p class="w3-text-grey w3-small w3-margin-top-0">@{{ user_obj.username }}</p>
+
+                <div class="w3-margin-bottom">
+                    {% if user_obj.is_superuser %}
+                        <span class="w3-tag w3-red w3-round w3-small">{% trans "Superuser" %}</span>
+                    {% endif %}
+                    {% if user_obj.is_admin %}
+                        <span class="w3-tag w3-theme w3-round w3-small">{% trans "Admin" %}</span>
+                    {% endif %}
+                    {% if user_obj.is_user %}
+                        <span class="w3-tag w3-blue-grey w3-round w3-small">{% trans "User" %}</span>
+                    {% endif %}
+                </div>
+
+                <hr>
+
+                <div class="w3-left-align w3-small w3-text-grey">
+                    <p>
+                        <i class="fa fa-calendar-check-o w3-text-theme" style="width: 20px;"></i>
+                        <strong>{% trans "Joined" %}:</strong> {{ user_obj.date_joined|date:"d M Y" }}
+                    </p>
+                    <p>
+                        <i class="fa fa-clock-o w3-text-theme" style="width: 20px;"></i>
+                        <strong>{% trans "Last Login" %}:</strong> {{ user_obj.last_login|date:"d M Y H:i"|default:"-" }}
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="w3-col l8 m7 s12">
+
+            <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+                <h4 class="w3-text-theme w3-border-bottom w3-padding-small">
+                    <strong><i class="fa fa-id-card w3-margin-right"></i> {% trans "Personal Information" %}</strong>
+                </h4>
+
+                <table class="w3-table w3-bordered w3-margin-top">
+                    <tr>
+                        <td class="w3-text-grey" style="width: 35%;"><strong>{% trans "First Name" %}</strong></td>
+                        <td>{{ user_obj.personal_info.name|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Surname" %}</strong></td>
+                        <td>{{ user_obj.personal_info.surname|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Phone Number" %}</strong></td>
+                        <td>
+                            {% if user_obj.personal_info.phone_number %}
+                                {{ user_obj.personal_info.phone_number }}
+                            {% elif user_obj.phone_number %}
+                                {{ user_obj.phone_number }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Personal Email" %}</strong></td>
+                        <td>{{ user_obj.personal_info.email|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Village" %}</strong></td>
+                        <td>{{ user_obj.personal_info.village|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "District" %}</strong></td>
+                        <td>{{ user_obj.personal_info.district|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Province" %}</strong></td>
+                        <td>{{ user_obj.personal_info.province|default:"-" }}</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
+                <h4 class="w3-text-theme w3-border-bottom w3-padding-small">
+                    <strong><i class="fa fa-cog w3-margin-right"></i> {% trans "Account & Preferences" %}</strong>
+                </h4>
+
+                <table class="w3-table w3-bordered w3-margin-top">
+                    <tr>
+                        <td class="w3-text-grey" style="width: 35%;"><strong>{% trans "Role" %}</strong></td>
+                        <td>
+                            {% if request.user.is_authenticated %}
+                                {{ user_obj.get_role_verbose_name|upper|default:"-" }}
+                            {% else %}
+                                -
+                            {% endif %}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey" style="width: 35%;"><strong>{% trans "Username" %}</strong></td>
+                        <td>{{ user_obj.username }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Account Email" %}</strong></td>
+                        <td>{{ user_obj.email|default:"-" }}</td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Language" %}</strong></td>
+                        <td>
+                            <span class="w3-tag w3-light-grey w3-border w3-round">
+                                {{ user_obj.profile.get_language_display|default:"-" }}
+                            </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="w3-text-grey"><strong>{% trans "Theme Color" %}</strong></td>
+                        <td>
+                            <span class="w3-tag w3-theme w3-round">
+                                {{ user_obj.profile.get_theme_color_display|default:"-" }}
+                            </span>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+{% endblock %}

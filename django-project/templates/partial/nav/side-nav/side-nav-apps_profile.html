@@ -6,13 +6,13 @@
         <div class="w3-container w3-padding w3-margin-top" style="flex: 1; overflow-y: auto;">
             <div class="w3-center">
                 <i class="fa fa-snowflake fa-solid w3-spin w3-large"></i>
-                <h5>Personalization</h5> <hr>
+                <h5>Administrator</h5> <hr>
             </div>
-            <a href="#" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
+            <a href="{% url 'admins:profile_home' %}" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
                 <i class="fa fa-user w3-margin-right"></i>
                 {% trans "User Profile" %}
             </a>
-            <a href="#" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
+            <a href="{% url 'admins:update_profile' %}" class="w3-bar-item w3-button w3-round-large w3-hover-theme">
                 <i class="fa fa-cog w3-margin-right"></i>
                 {% trans "Account Settings" %}
             </a>
@@ -20,14 +20,6 @@
                 <i class="fa fa-bell w3-margin-right"></i>
                 {% trans "Notifications" %}
             </a>
-            {% if user.is_superuser %}
-            <a href="{% url 'admin:index' %}"
-                class="w3-bar-item w3-button w3-round-large w3-hover-theme"
-                target="_blank">
-                <i class="fa fa-space-shuttle w3-margin-right"></i>
-                {% trans "Root" %}
-            </a>
-            {% endif %}
         </div>
 
         {% include 'partial/nav/side-nav/footer-nav.html' %}

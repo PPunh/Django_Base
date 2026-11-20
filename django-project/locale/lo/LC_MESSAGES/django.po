@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-11 16:26+0700\n"
+"POT-Creation-Date: 2026-11-20 10:10+0700\n"
 "PO-Revision-Date: 2026-11-11 16:30+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Lao <LL@li.org>\n"
@@ -16,301 +16,336 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: apps/common/models.py:13
-msgid "Phongsaly"
-msgstr "ຜົ້ງສາລີ"
-
-#: apps/common/models.py:14
-msgid "Luangnamtha"
-msgstr "ຫຼວງນ້ຳທາ"
-
-#: apps/common/models.py:15
-msgid "Borkeo"
-msgstr "ບໍ່ແກ້ວ"
-
-#: apps/common/models.py:16
-msgid "Oudomxay"
-msgstr "ອຸດົມໄຊ"
-
-#: apps/common/models.py:17
-msgid "Xayaburi"
-msgstr "ໄຊຍະບູລີ"
-
-#: apps/common/models.py:18
-msgid "Luangprabang"
-msgstr "ຫຼວງພະບາງ"
-
-#: apps/common/models.py:19
-msgid "Houaphan"
-msgstr "ຫົວພັນ"
-
-#: apps/common/models.py:20
-msgid "Xiangkhouang"
-msgstr "ຊຽງຂວາງ"
-
-#: apps/common/models.py:21
-msgid "Vientiane Province"
-msgstr "ແຂວງວຽງຈັນ"
-
-#: apps/common/models.py:22
-msgid "Vientiane Capital"
-msgstr "ນະຄອນຫຼວງວຽງຈັນ"
-
-#: apps/common/models.py:23
-msgid "Xaisomboun"
-msgstr "ໄຊສົມບູນ"
-
-#: apps/common/models.py:24
-msgid "Borlikhamxai"
-msgstr "ບໍລິຄຳໄຊ"
-
-#: apps/common/models.py:25
-msgid "Khammouan"
-msgstr "ຄຳມ່ວນ"
-
-#: apps/common/models.py:26
-msgid "Salavan"
-msgstr "ສາລະວັນ"
-
-#: apps/common/models.py:27
-msgid "Champasak"
-msgstr "ຈຳປາສັກ"
-
-#: apps/common/models.py:28
-msgid "Attapeu"
-msgstr "ອັດຕະປື"
-
-#: apps/common/models.py:33 apps/common/models.py:36 apps/common/models.py:63
-msgid "Province"
-msgstr "ແຂວງ"
-
-#: apps/common/models.py:37
-msgid "Provinces"
-msgstr "ແຂວງຕ່າງໆ"
-
-#: apps/common/models.py:48
-msgid "Name"
-msgstr "ຊື່"
-
-#: apps/common/models.py:49
-msgid "Surname"
-msgstr "ນາມສະກຸນ"
-
-#: apps/common/models.py:52
-msgid "Phone number must be exactly 8 digits"
-msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກພໍດີ"
-
-#: apps/common/models.py:57
-msgid "Phone Number"
-msgstr "ເບີໂທລະສັບ"
-
-#: apps/common/models.py:59
-msgid "Address"
-msgstr "ທີ່ຢູ່"
-
-#: apps/common/models.py:68 apps/common/models.py:69
-msgid "Personal Information"
-msgstr "ຂໍ້ມູນສ່ວນຕົວ"
-
-#: apps/common/models.py:78
-msgid "Profile Picture"
-msgstr "ຮູບໂປຣໄຟລ໌"
-
-#: apps/common/models.py:117
-msgid "Created By"
-msgstr "ສ້າງໂດຍ"
-
-#: apps/common/models.py:122
-msgid "Created Date"
-msgstr "ວັນທີສ້າງ"
-
-#: apps/common/models.py:129
-msgid "Modified By"
-msgstr "ແກ້ໄຂໂດຍ"
-
-#: apps/common/models.py:134
-msgid "Modified Date"
-msgstr "ວັນທີແກ້ໄຂ"
-
-#: apps/users/models.py:16
-msgid "User"
-msgstr "ຜູ້ໃຊ້"
-
-#: apps/users/models.py:17 templates/partial/nav/nav-admin.html:26
-msgid "Users"
-msgstr "ຜູ້ໃຊ້"
-
-#: apps/users/models.py:22
-msgid "Phone number must be 8 digits."
-msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກ."
-
-#: apps/users/models.py:32
-msgid "A user with that phone number already exists."
-msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ເບີໂທລະສັບນີ້ຢູ່ແລ້ວ."
-
-#: apps/users/models.py:39
-msgid "A user with that email address already exists."
-msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ທີ່ຢູ່ອີເມວນີ້ຢູ່ແລ້ວ."
-
-#: apps/users/models.py:54
-msgid "IS USER"
-msgstr "ເປັນຜູ້ໃຊ້"
-
-#: apps/users/models.py:58
-msgid "IS ADMIN"
-msgstr "ເປັນຜູ້ດູແລລະບົບ"
-
-#: apps/users/models.py:90
-msgid "Profile"
-msgstr "ໂປຣໄຟລ໌"
-
-#: apps/users/models.py:91
-msgid "Profiles"
-msgstr "ໂປຣໄຟລ໌ທັງໝົດ"
-
-#: apps/users/models.py:94
-msgid "English"
-msgstr "ພາສາອັງກິດ"
-
-#: apps/users/models.py:95
-msgid "Lao"
-msgstr "ພາສາລາວ"
-
-#: apps/users/models.py:99
-msgid "dark"
-msgstr "ໂຫມດມືດ"
-
-#: apps/users/models.py:100
-msgid "black"
-msgstr "ສີດຳ"
-
-#: apps/users/models.py:101
-msgid "blue"
-msgstr "ສີຟ້າ"
-
-#: apps/users/models.py:102
-msgid "light blue"
-msgstr "ສີຟ້າອ່ອນ"
-
-#: apps/users/models.py:103
-msgid "blue grey"
-msgstr "ສີເທົາອົມຟ້າ"
-
-#: apps/users/models.py:104
-msgid "red"
-msgstr "ສີແດງ"
-
-#: apps/users/models.py:105
-msgid "brown"
-msgstr "ສີນ້ຳຕານ"
-
-#: apps/users/models.py:106
-msgid "cyan"
-msgstr "ສີຟ້າຂຽວ"
-
-#: apps/users/models.py:107
-msgid "grey"
-msgstr "ສີເທົາ"
-
-#: apps/users/models.py:108
-msgid "dark grey"
-msgstr "ສີເທົາເຂັ້ມ"
-
-#: apps/users/models.py:109
-msgid "orange"
-msgstr "ສີສົ້ມ"
-
-#: apps/users/models.py:110
-msgid "deep orange"
-msgstr "ສີສົ້ມເຂັ້ມ"
-
-#: apps/users/models.py:111
-msgid "purple"
-msgstr "ສີມ່ວງ"
-
-#: apps/users/models.py:112
-msgid "deep purple"
-msgstr "ສີມ່ວງເຂັ້ມ"
-
-#: apps/users/models.py:113
-msgid "green"
-msgstr "ສີຂຽວ"
-
-#: apps/users/models.py:114
-msgid "light green"
-msgstr "ສີຂຽວອ່ອນ"
-
-#: apps/users/models.py:115
-msgid "indigo"
-msgstr "ສີຄາມ"
-
-#: apps/users/models.py:116
-msgid "khaki"
-msgstr "ສີກາກີ"
-
-#: apps/users/models.py:117
-msgid "lime"
-msgstr "ສີຂຽວມະນາວ"
-
-#: apps/users/models.py:118
-msgid "pink"
-msgstr "ສີບົວ"
-
-#: apps/users/models.py:119
-msgid "teal"
-msgstr "ສີຂຽວອົມຟ້າ"
-
-#: apps/users/models.py:120
-msgid "yellow"
-msgstr "ສີເຫຼືອງ"
-
-#: apps/users/models.py:121
-msgid "amber"
-msgstr "ສີເຫຼືອງອຳພັນ"
-
+#: apps/admins/templates/admins/home.html:15
 #: apps/users/templates/users/home.html:15
 msgid "Dashboard Overview"
 msgstr "ພາບລວມແຜງຄວບຄຸມ"
 
+#: apps/admins/templates/admins/home.html:17
 #: apps/users/templates/users/home.html:17
 msgid "Active Theme"
 msgstr "ຮູບແບບສີທີ່ໃຊ້ຢູ່"
 
+#: apps/admins/templates/admins/home.html:25
 #: apps/users/templates/users/home.html:25
 msgid "Primary Theme"
 msgstr "ຮູບແບບສີຫຼັກ"
 
+#: apps/admins/templates/admins/home.html:26
 #: apps/users/templates/users/home.html:26
 msgid "Styled with <code>.w3-theme</code>"
 msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme</code>"
 
+#: apps/admins/templates/admins/home.html:28
 #: apps/users/templates/users/home.html:28
 msgid "Action Button"
 msgstr "ປຸ່ມດຳເນີນການ"
 
+#: apps/admins/templates/admins/home.html:35
 #: apps/users/templates/users/home.html:35
 msgid "Light Variant"
 msgstr "ຮູບແບບສີອ່ອນ"
 
+#: apps/admins/templates/admins/home.html:36
 #: apps/users/templates/users/home.html:36
 msgid "Styled with <code>.w3-theme-l4</code> and <code>.w3-border-theme</code>"
 msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme-l4</code> ແລະ <code>.w3-border-theme</code>"
 
+#: apps/admins/templates/admins/home.html:38
 #: apps/users/templates/users/home.html:38
 msgid "Theme Button"
 msgstr "ປຸ່ມຮູບແບບສີ"
 
+#: apps/admins/templates/admins/home.html:45
 #: apps/users/templates/users/home.html:45
 msgid "Dark Variant"
 msgstr "ຮູບແບບສີເຂັ້ມ"
 
+#: apps/admins/templates/admins/home.html:46
 #: apps/users/templates/users/home.html:46
 msgid "Styled with <code>.w3-theme-d3</code>"
 msgstr "ຈັດຮູບແບບດ້ວຍ <code>.w3-theme-d3</code>"
 
+#: apps/admins/templates/admins/home.html:48
 #: apps/users/templates/users/home.html:48
 msgid "Dark Shade Action"
 msgstr "ປຸ່ມສີເຂັ້ມ"
+
+#: apps/admins/templates/admins/profile.html:17
+#: templates/partial/nav/side-nav/side-nav-apps_admins.html:13
+#: templates/partial/nav/side-nav/side-nav-apps_profile.html:13
+#, fuzzy
+#| msgid "Profile"
+msgid "User Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/admins/templates/admins/profile.html:19
+msgid "Manage your personal information and account preferences"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:24
+#, fuzzy
+#| msgid "Profile"
+msgid "Edit Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/admins/templates/admins/profile.html:27
+#: apps/users/templates/users/login.html:36
+msgid "Password"
+msgstr "ລະຫັດຜ່ານ"
+
+#: apps/admins/templates/admins/profile.html:66
+msgid "Superuser"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:69
+#: templates/partial/nav/nav-admin.html:31
+msgid "Admin"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:72 apps/users/models.py:20
+#: apps/users/models.py:153
+msgid "User"
+msgstr "ຜູ້ໃຊ້"
+
+#: apps/admins/templates/admins/profile.html:81
+msgid "Joined"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:85
+msgid "Last Login"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:96
+msgid "Personal Information"
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
+
+#: apps/admins/templates/admins/profile.html:101
+msgid "First Name"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:105 apps/common/models.py:78
+msgid "Surname"
+msgstr "ນາມສະກຸນ"
+
+#: apps/admins/templates/admins/profile.html:109 apps/common/models.py:86
+msgid "Phone Number"
+msgstr "ເບີໂທລະສັບ"
+
+#: apps/admins/templates/admins/profile.html:121
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Personal Email"
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
+
+#: apps/admins/templates/admins/profile.html:125 apps/common/models.py:57
+msgid "Village"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:129 apps/common/models.py:30
+#: apps/common/models.py:53
+msgid "District"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:133 apps/common/models.py:14
+#: apps/common/models.py:26 apps/common/models.py:47
+msgid "Province"
+msgstr "ແຂວງ"
+
+#: apps/admins/templates/admins/profile.html:141
+msgid "Account & Preferences"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:146
+#: apps/users/templates/users/login.html:29
+msgid "Username"
+msgstr "ຊື່ຜູ້ໃຊ້"
+
+#: apps/admins/templates/admins/profile.html:150
+msgid "Account Email"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:154
+#: templates/partial/lang_switcher.html:10
+msgid "Language"
+msgstr "ພາສາ"
+
+#: apps/admins/templates/admins/profile.html:162
+#, fuzzy
+#| msgid "Theme Button"
+msgid "Theme Color"
+msgstr "ປຸ່ມຮູບແບບສີ"
+
+#: apps/admins/views.py:21 apps/users/models.py:97
+#: templates/partial/nav/nav-admin.html:26
+msgid "Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/common/models.py:77
+msgid "Name"
+msgstr "ຊື່"
+
+#: apps/common/models.py:81
+msgid "Phone number must be exactly 8 digits"
+msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກພໍດີ"
+
+#: apps/common/models.py:90
+msgid "Email"
+msgstr ""
+
+#: apps/common/models.py:94 apps/users/models.py:46
+msgid "A user with that email address already exists."
+msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ທີ່ຢູ່ອີເມວນີ້ຢູ່ແລ້ວ."
+
+#: apps/common/models.py:99 apps/common/models.py:100
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Personal Info"
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
+
+#: apps/common/models.py:115
+msgid "Created By"
+msgstr "ສ້າງໂດຍ"
+
+#: apps/common/models.py:120
+msgid "Created Date"
+msgstr "ວັນທີສ້າງ"
+
+#: apps/common/models.py:127
+msgid "Modified By"
+msgstr "ແກ້ໄຂໂດຍ"
+
+#: apps/common/models.py:132
+msgid "Modified Date"
+msgstr "ວັນທີແກ້ໄຂ"
+
+#: apps/users/models.py:21
+msgid "Users"
+msgstr "ຜູ້ໃຊ້"
+
+#: apps/users/models.py:29
+msgid "Phone number must be 8 digits."
+msgstr "ເບີໂທລະສັບຕ້ອງມີ 8 ຕົວເລກ."
+
+#: apps/users/models.py:39
+msgid "A user with that phone number already exists."
+msgstr "ມີຜູ້ໃຊ້ທີ່ໃຊ້ເບີໂທລະສັບນີ້ຢູ່ແລ້ວ."
+
+#: apps/users/models.py:61
+msgid "IS USER"
+msgstr "ເປັນຜູ້ໃຊ້"
+
+#: apps/users/models.py:65
+msgid "IS ADMIN"
+msgstr "ເປັນຜູ້ດູແລລະບົບ"
+
+#: apps/users/models.py:98
+msgid "Profiles"
+msgstr "ໂປຣໄຟລ໌ທັງໝົດ"
+
+#: apps/users/models.py:101
+msgid "English"
+msgstr "ພາສາອັງກິດ"
+
+#: apps/users/models.py:102
+msgid "Lao"
+msgstr "ພາສາລາວ"
+
+#: apps/users/models.py:106
+msgid "dark"
+msgstr "ໂຫມດມືດ"
+
+#: apps/users/models.py:107
+msgid "black"
+msgstr "ສີດຳ"
+
+#: apps/users/models.py:108
+msgid "blue"
+msgstr "ສີຟ້າ"
+
+#: apps/users/models.py:109
+msgid "light blue"
+msgstr "ສີຟ້າອ່ອນ"
+
+#: apps/users/models.py:110
+msgid "blue grey"
+msgstr "ສີເທົາອົມຟ້າ"
+
+#: apps/users/models.py:111
+msgid "red"
+msgstr "ສີແດງ"
+
+#: apps/users/models.py:112
+msgid "brown"
+msgstr "ສີນ້ຳຕານ"
+
+#: apps/users/models.py:113
+msgid "cyan"
+msgstr "ສີຟ້າຂຽວ"
+
+#: apps/users/models.py:114
+msgid "grey"
+msgstr "ສີເທົາ"
+
+#: apps/users/models.py:115
+msgid "dark grey"
+msgstr "ສີເທົາເຂັ້ມ"
+
+#: apps/users/models.py:116
+msgid "orange"
+msgstr "ສີສົ້ມ"
+
+#: apps/users/models.py:117
+msgid "deep orange"
+msgstr "ສີສົ້ມເຂັ້ມ"
+
+#: apps/users/models.py:118
+msgid "purple"
+msgstr "ສີມ່ວງ"
+
+#: apps/users/models.py:119
+msgid "deep purple"
+msgstr "ສີມ່ວງເຂັ້ມ"
+
+#: apps/users/models.py:120
+msgid "green"
+msgstr "ສີຂຽວ"
+
+#: apps/users/models.py:121
+msgid "light green"
+msgstr "ສີຂຽວອ່ອນ"
+
+#: apps/users/models.py:122
+msgid "indigo"
+msgstr "ສີຄາມ"
+
+#: apps/users/models.py:123
+msgid "khaki"
+msgstr "ສີກາກີ"
+
+#: apps/users/models.py:124
+msgid "lime"
+msgstr "ສີຂຽວມະນາວ"
+
+#: apps/users/models.py:125
+msgid "pink"
+msgstr "ສີບົວ"
+
+#: apps/users/models.py:126
+msgid "teal"
+msgstr "ສີຂຽວອົມຟ້າ"
+
+#: apps/users/models.py:127
+msgid "yellow"
+msgstr "ສີເຫຼືອງ"
+
+#: apps/users/models.py:128
+msgid "amber"
+msgstr "ສີເຫຼືອງອຳພັນ"
+
+#: apps/users/models.py:148
+msgid "Avatar"
+msgstr ""
 
 #: apps/users/templates/users/login.html:22
 #: templates/partial/nav/nav-admin.html:13
@@ -321,30 +356,101 @@ msgstr "ລະບົບພື້ນຖານ"
 msgid "Please sign in to your account"
 msgstr "ກະລຸນາເຂົ້າລະບົບບັນຊີຂອງທ່ານ"
 
-#: apps/users/templates/users/login.html:29
-msgid "Username"
-msgstr "ຊື່ຜູ້ໃຊ້"
-
 #: apps/users/templates/users/login.html:32
 msgid "Username / Email / Phone"
 msgstr "ຊື່ຜູ້ໃຊ້ / ອີເມວ / ເບີໂທ"
-
-#: apps/users/templates/users/login.html:36
-msgid "Password"
-msgstr "ລະຫັດຜ່ານ"
 
 #: apps/users/templates/users/login.html:45
 msgid "Sign In"
 msgstr "ເຂົ້າລະບົບ"
 
-#: templates/partial/lang_switcher.html:10
-msgid "Language"
-msgstr "ພາສາ"
-
 #: templates/partial/nav/nav-admin.html:21
 msgid "Home"
 msgstr "ໜ້າຫຼັກ"
 
-#: templates/partial/nav/nav-admin.html:34
+#: templates/partial/nav/nav-admin.html:39
 msgid "Sign Out"
 msgstr "ອອກຈາກລະບົບ"
+
+#: templates/partial/nav/side-nav/footer-nav.html:18
+msgid "Online"
+msgstr ""
+
+#: templates/partial/nav/side-nav/footer-nav.html:26
+msgid "Logout"
+msgstr ""
+
+#: templates/partial/nav/side-nav/side-nav-apps_admins.html:17
+#: templates/partial/nav/side-nav/side-nav-apps_profile.html:17
+msgid "Account Settings"
+msgstr ""
+
+#: templates/partial/nav/side-nav/side-nav-apps_admins.html:21
+#: templates/partial/nav/side-nav/side-nav-apps_profile.html:21
+msgid "Notifications"
+msgstr ""
+
+#: templates/partial/nav/side-nav/side-nav-apps_admins.html:28
+msgid "DJANGO-ADMIN"
+msgstr ""
+
+#: templates/partial/nav/side-nav/side-nav-apps_users.html:13
+msgid "home"
+msgstr ""
+
+#~ msgid "Phongsaly"
+#~ msgstr "ຜົ້ງສາລີ"
+
+#~ msgid "Luangnamtha"
+#~ msgstr "ຫຼວງນ້ຳທາ"
+
+#~ msgid "Borkeo"
+#~ msgstr "ບໍ່ແກ້ວ"
+
+#~ msgid "Oudomxay"
+#~ msgstr "ອຸດົມໄຊ"
+
+#~ msgid "Xayaburi"
+#~ msgstr "ໄຊຍະບູລີ"
+
+#~ msgid "Luangprabang"
+#~ msgstr "ຫຼວງພະບາງ"
+
+#~ msgid "Houaphan"
+#~ msgstr "ຫົວພັນ"
+
+#~ msgid "Xiangkhouang"
+#~ msgstr "ຊຽງຂວາງ"
+
+#~ msgid "Vientiane Province"
+#~ msgstr "ແຂວງວຽງຈັນ"
+
+#~ msgid "Vientiane Capital"
+#~ msgstr "ນະຄອນຫຼວງວຽງຈັນ"
+
+#~ msgid "Xaisomboun"
+#~ msgstr "ໄຊສົມບູນ"
+
+#~ msgid "Borlikhamxai"
+#~ msgstr "ບໍລິຄຳໄຊ"
+
+#~ msgid "Khammouan"
+#~ msgstr "ຄຳມ່ວນ"
+
+#~ msgid "Salavan"
+#~ msgstr "ສາລະວັນ"
+
+#~ msgid "Champasak"
+#~ msgstr "ຈຳປາສັກ"
+
+#~ msgid "Attapeu"
+#~ msgstr "ອັດຕະປື"
+
+#~ msgid "Provinces"
+#~ msgstr "ແຂວງຕ່າງໆ"
+
+#~ msgid "Address"
+#~ msgstr "ທີ່ຢູ່"
+
+#~ msgid "Profile Picture"
+#~ msgstr "ຮູບໂປຣໄຟລ໌"

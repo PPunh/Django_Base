@@ -22,6 +22,7 @@ urlpatterns = [
     path('i18n/', include('django.conf.urls.i18n')),
     path('select2/', include('django_select2.urls')),
     path('', include('apps.users.urls', namespace='users')),
+    path('admins/', include('apps.admins.urls', namespace='admins')),
     path('common/', include('apps.common.urls', namespace='common')),
 ]
 

@@ -88,6 +88,12 @@ class User(AbstractUser):
 
         super().save(*args, **kwargs)
 
+    def get_role_verbose_name(self):
+        for field_name in ('is_superuser', 'is_admin', 'is_user'):
+            if getattr(self, field_name):
+                return self._meta.get_field(field_name).verbose_name
+        return None
+
     def __str__(self):
         return f"{self.username} ({self.phone_number})"
 
@@ -151,7 +157,7 @@ class PersonalInfo(PersonalInfoModel, AuditTableModel):
         User,
         on_delete = models.CASCADE,
         verbose_name = _("User"),
-        related_name = "%(class)s_user"
+        related_name = "personal_info"
     )
 
     class Meta:
