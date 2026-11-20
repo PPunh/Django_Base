@@ -1,13 +1,14 @@
 from django.contrib import admin
+from modeltranslation.admin import TabbedTranslationAdmin
 from apps.common.models import Province, District
 
 @admin.register(Province)
-class ProvinceAdmin(admin.ModelAdmin):
+class ProvinceAdmin(TabbedTranslationAdmin):
     list_display = ['id', 'name']
     search_fields = ['name']
 
 @admin.register(District)
-class DistrictAdmin(admin.ModelAdmin):
+class DistrictAdmin(TabbedTranslationAdmin):
     list_display = ['id', 'name', 'province']
     list_filter = ['province']
     search_fields = ['name']

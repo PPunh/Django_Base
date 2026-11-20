@@ -27,3 +27,4 @@ python-docx==0.8.11
 dj-database-url
 gunicorn==21.2.0
 django-crontab
+django-modeltranslation==0.20.6
