@@ -3,9 +3,9 @@
 {% load i18n %}
 
 {% block navigation_left %}
-    {% if user.is_authenticated %}
-        {% include 'partial/nav/side-nav/side-nav-apps_profile.html' %}
-    {% endif %}
+{% if user.is_authenticated %}
+{% include 'partial/nav/side-nav/side-nav-apps_profile.html' %}
+{% endif %}
 {% endblock %}
 
 {% block main-content %}
@@ -18,17 +18,17 @@
                 <h2 class="w3-text-theme w3-margin-0">
                     <strong>
                         {% if object.pk %}
-                            <i class="fa fa-edit w3-margin-right"></i>{% trans "Update User Profile" %}
+                        <i class="fa fa-edit w3-margin-right"></i>{% trans "Update User Profile" %}
                         {% else %}
-                            <i class="fa fa-user-plus w3-margin-right"></i>{% trans "Create New User" %}
+                        <i class="fa fa-user-plus w3-margin-right"></i>{% trans "Create New User" %}
                         {% endif %}
                     </strong>
                 </h2>
                 <p class="w3-text-grey w3-small w3-margin-bottom">
                     {% if object.pk %}
-                        {% trans "Update account details, preferences, and personal address information" %}
+                    {% trans "Update account details, preferences, and personal address information" %}
                     {% else %}
-                        {% trans "Fill in the details below to register a new user account" %}
+                    {% trans "Fill in the details below to register a new user account" %}
                     {% endif %}
                 </p>
             </div>
@@ -66,7 +66,7 @@
         {% if user_personal_info_formset %}
         <div class="w3-card w3-round-large w3-white w3-padding-large w3-margin-bottom">
             <h5 class="w3-text-theme w3-border-bottom w3-padding-small">
-                <strong><i class="fa fa-map-marker w3-margin-right"></i>{% trans "Personal Information & Address" %}</strong>
+                <strong><i class="fa fa-map-marker w3-margin-right"></i>{% trans "Personal Information & Address"%}</strong>
             </h5>
             {% include 'snippets/formset_generic.html' with formset=user_personal_info_formset %}
         </div>
@@ -75,7 +75,8 @@
         <!-- Action Buttons -->
         <div class="w3-bar w3-padding-16">
             <div class="w3-right">
-                <a href="javascript:history.back()" class="w3-button w3-light-grey w3-border w3-round-large w3-margin-right">
+                <a href="javascript:history.back()"
+                    class="w3-button w3-light-grey w3-border w3-round-large w3-margin-right">
                     <i class="fa fa-times w3-margin-right"></i>{% trans "Cancel" %}
                 </a>
                 <button type="submit" class="w3-button w3-theme w3-round-large">
@@ -87,6 +88,4 @@
 
     </form>
 </div>
-
-<script src="{% static 'common/js/chained_address.js' %}"></script>
 {% endblock %}

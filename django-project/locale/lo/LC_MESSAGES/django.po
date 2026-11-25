@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2026-11-20 10:10+0700\n"
+"POT-Creation-Date: 2026-11-20 14:41+0700\n"
 "PO-Revision-Date: 2026-11-11 16:30+0700\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: Lao <LL@li.org>\n"
@@ -104,7 +104,7 @@ msgid "Admin"
 msgstr ""
 
 #: apps/admins/templates/admins/profile.html:72 apps/users/models.py:20
-#: apps/users/models.py:153
+#: apps/users/models.py:159
 msgid "User"
 msgstr "ຜູ້ໃຊ້"
 
@@ -157,29 +157,107 @@ msgid "Account & Preferences"
 msgstr ""
 
 #: apps/admins/templates/admins/profile.html:146
+msgid "Role"
+msgstr ""
+
+#: apps/admins/templates/admins/profile.html:156
 #: apps/users/templates/users/login.html:29
 msgid "Username"
 msgstr "ຊື່ຜູ້ໃຊ້"
 
-#: apps/admins/templates/admins/profile.html:150
+#: apps/admins/templates/admins/profile.html:160
 msgid "Account Email"
 msgstr ""
 
-#: apps/admins/templates/admins/profile.html:154
+#: apps/admins/templates/admins/profile.html:164
 #: templates/partial/lang_switcher.html:10
 msgid "Language"
 msgstr "ພາສາ"
 
-#: apps/admins/templates/admins/profile.html:162
+#: apps/admins/templates/admins/profile.html:172
 #, fuzzy
 #| msgid "Theme Button"
 msgid "Theme Color"
 msgstr "ປຸ່ມຮູບແບບສີ"
 
-#: apps/admins/views.py:21 apps/users/models.py:97
+#: apps/admins/templates/admins/update_profile.html:21
+#, fuzzy
+#| msgid "Profile"
+msgid "Update User Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/admins/templates/admins/update_profile.html:23
+msgid "Create New User"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:29
+msgid "Update account details, preferences, and personal address information"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:31
+msgid "Fill in the details below to register a new user account"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:37
+msgid "Back"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:50
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Account Information"
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
+
+#: apps/admins/templates/admins/update_profile.html:59
+#, fuzzy
+#| msgid "Profile Picture"
+msgid "Profile & Preferences"
+msgstr "ຮູບໂປຣໄຟລ໌"
+
+#: apps/admins/templates/admins/update_profile.html:69
+#, fuzzy
+#| msgid "Personal Information"
+msgid "Personal Information & Address"
+msgstr "ຂໍ້ມູນສ່ວນຕົວ"
+
+#: apps/admins/templates/admins/update_profile.html:79
+msgid "Cancel"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:83
+msgid "Save Changes"
+msgstr ""
+
+#: apps/admins/templates/admins/update_profile.html:83
+#, fuzzy
+#| msgid "Created Date"
+msgid "Create User"
+msgstr "ວັນທີສ້າງ"
+
+#: apps/admins/views.py:26 apps/users/models.py:103
 #: templates/partial/nav/nav-admin.html:26
 msgid "Profile"
 msgstr "ໂປຣໄຟລ໌"
+
+#: apps/admins/views.py:68
+msgid "Update account successful"
+msgstr ""
+
+#: apps/admins/views.py:79
+#, fuzzy
+#| msgid "Profile"
+msgid "Update Profile"
+msgstr "ໂປຣໄຟລ໌"
+
+#: apps/common/management/commands/seed_address.py:249
+msgid "Initial address data (province and district)"
+msgstr ""
+
+#: apps/common/management/commands/seed_address.py:274
+#, python-format
+msgid ""
+"Added provinces: %(provinces)d and districts: %(districts)d successfully"
+msgstr ""
 
 #: apps/common/models.py:77
 msgid "Name"
@@ -239,111 +317,111 @@ msgstr "ເປັນຜູ້ໃຊ້"
 msgid "IS ADMIN"
 msgstr "ເປັນຜູ້ດູແລລະບົບ"
 
-#: apps/users/models.py:98
+#: apps/users/models.py:104
 msgid "Profiles"
 msgstr "ໂປຣໄຟລ໌ທັງໝົດ"
 
-#: apps/users/models.py:101
+#: apps/users/models.py:107
 msgid "English"
 msgstr "ພາສາອັງກິດ"
 
-#: apps/users/models.py:102
+#: apps/users/models.py:108
 msgid "Lao"
 msgstr "ພາສາລາວ"
 
-#: apps/users/models.py:106
+#: apps/users/models.py:112
 msgid "dark"
 msgstr "ໂຫມດມືດ"
 
-#: apps/users/models.py:107
+#: apps/users/models.py:113
 msgid "black"
 msgstr "ສີດຳ"
 
-#: apps/users/models.py:108
+#: apps/users/models.py:114
 msgid "blue"
 msgstr "ສີຟ້າ"
 
-#: apps/users/models.py:109
+#: apps/users/models.py:115
 msgid "light blue"
 msgstr "ສີຟ້າອ່ອນ"
 
-#: apps/users/models.py:110
+#: apps/users/models.py:116
 msgid "blue grey"
 msgstr "ສີເທົາອົມຟ້າ"
 
-#: apps/users/models.py:111
+#: apps/users/models.py:117
 msgid "red"
 msgstr "ສີແດງ"
 
-#: apps/users/models.py:112
+#: apps/users/models.py:118
 msgid "brown"
 msgstr "ສີນ້ຳຕານ"
 
-#: apps/users/models.py:113
+#: apps/users/models.py:119
 msgid "cyan"
 msgstr "ສີຟ້າຂຽວ"
 
-#: apps/users/models.py:114
+#: apps/users/models.py:120
 msgid "grey"
 msgstr "ສີເທົາ"
 
-#: apps/users/models.py:115
+#: apps/users/models.py:121
 msgid "dark grey"
 msgstr "ສີເທົາເຂັ້ມ"
 
-#: apps/users/models.py:116
+#: apps/users/models.py:122
 msgid "orange"
 msgstr "ສີສົ້ມ"
 
-#: apps/users/models.py:117
+#: apps/users/models.py:123
 msgid "deep orange"
 msgstr "ສີສົ້ມເຂັ້ມ"
 
-#: apps/users/models.py:118
+#: apps/users/models.py:124
 msgid "purple"
 msgstr "ສີມ່ວງ"
 
-#: apps/users/models.py:119
+#: apps/users/models.py:125
 msgid "deep purple"
 msgstr "ສີມ່ວງເຂັ້ມ"
 
-#: apps/users/models.py:120
+#: apps/users/models.py:126
 msgid "green"
 msgstr "ສີຂຽວ"
 
-#: apps/users/models.py:121
+#: apps/users/models.py:127
 msgid "light green"
 msgstr "ສີຂຽວອ່ອນ"
 
-#: apps/users/models.py:122
+#: apps/users/models.py:128
 msgid "indigo"
 msgstr "ສີຄາມ"
 
-#: apps/users/models.py:123
+#: apps/users/models.py:129
 msgid "khaki"
 msgstr "ສີກາກີ"
 
-#: apps/users/models.py:124
+#: apps/users/models.py:130
 msgid "lime"
 msgstr "ສີຂຽວມະນາວ"
 
-#: apps/users/models.py:125
+#: apps/users/models.py:131
 msgid "pink"
 msgstr "ສີບົວ"
 
-#: apps/users/models.py:126
+#: apps/users/models.py:132
 msgid "teal"
 msgstr "ສີຂຽວອົມຟ້າ"
 
-#: apps/users/models.py:127
+#: apps/users/models.py:133
 msgid "yellow"
 msgstr "ສີເຫຼືອງ"
 
-#: apps/users/models.py:128
+#: apps/users/models.py:134
 msgid "amber"
 msgstr "ສີເຫຼືອງອຳພັນ"
 
-#: apps/users/models.py:148
+#: apps/users/models.py:154
 msgid "Avatar"
 msgstr ""
 
@@ -451,6 +529,3 @@ msgstr ""
 
 #~ msgid "Address"
 #~ msgstr "ທີ່ຢູ່"
-
-#~ msgid "Profile Picture"
-#~ msgstr "ຮູບໂປຣໄຟລ໌"
